@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Playbook | The Complete AI and Claude Code Curriculum</title>
+<meta name="description" content="26 chapters, 40+ AI tools, interactive tools, quizzes, and a built-in AI assistant. The most comprehensive guide to AI, Claude, and Claude Code ever built. Master AI, build real things, automate everything.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fafafa;
+  --bg-alt: #fafafa;
+  --bg-white: #ffffff;
+  --text: #09090b;
+  --text-secondary: #3f3f46;
+  --text-muted: #71717a;
+  --accent: #6d28d9;
+  --accent-hover: #5b21b6;
+  --accent-light: #f5f3ff;
+  --accent-glow: rgba(109, 40, 217, 0.08);
+  --border: #e4e4e7;
+  --border-light: #f0f0f2;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.1);
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 250, 250, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+nav .nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+nav .logo span {
+  color: var(--accent);
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+nav .nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav .nav-links a:hover {
+  color: var(--text);
+}
+
+nav .nav-cta {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: background 0.2s;
+}
+
+nav .nav-cta:hover {
+  background: var(--accent-hover);
+}
+
+@media (max-width: 640px) {
+  nav .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+section {
+  padding: 100px 0;
+}
+
+/* HERO */
+.hero {
+  padding: 160px 0 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.15;
+  transition: opacity 0.5s ease;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 950px;
+  margin: 0 auto 24px;
+  color: var(--text);
+}
+
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent), #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 19px;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(109, 40, 217, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(109, 40, 217, 0.3);
+}
+
+.hero-sub {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: none;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .stat-number {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.hero-stat .stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+  .hero-stats { gap: 24px; }
+  .hero-stat .stat-number { font-size: 22px; }
+}
+
+/* POWER SECTION */
+#power {
+  background: var(--text);
+  color: #fff;
+  padding: 80px 0;
+}
+
+#power .section-label {
+  color: #a78bfa;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+#power h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+#power .section-sub {
+  color: #a1a1aa;
+  font-size: 16px;
+  max-width: 500px;
+  margin-bottom: 48px;
+}
+
+.power-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.power-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: background 0.2s;
+}
+
+.power-card:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.power-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(167, 139, 250, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.power-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.power-card p {
+  font-size: 14px;
+  color: #a1a1aa;
+  line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+  .power-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* GAP */
+#gap {
+  text-align: center;
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+.gap-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.gap-content .big-quote {
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.gap-content .gap-follow {
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.gap-content .gap-close {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 20px;
+}
+
+/* CURRICULUM SECTION */
+#curriculum {
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+#curriculum .section-label {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+#curriculum h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+#curriculum .section-sub {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: 48px;
+  line-height: 1.55;
+}
+
+.curriculum-track {
+  margin-bottom: 40px;
+}
+
+.track-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  padding-left: 4px;
+}
+
+.modules {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.module {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.module:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.module-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.module-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.module-body p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.module-result {
+  background: #f0fdf4;
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .module {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .module-result { justify-self: start; }
+}
+
+/* INTERACTIVE TOOLS */
+.tools-section {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.tools-section h3 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.tools-section .tools-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.tool-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: box-shadow 0.2s;
+}
+
+.tool-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.tool-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-light);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.tool-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.tool-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* WHO */
+#who {
+  padding: 80px 0;
+  text-align: center;
+}
+
+#who .section-label {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+#who h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+.persona {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.persona-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--accent-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.persona h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.persona p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .persona-grid { grid-template-columns: 1fr; }
+}
+
+/* PRICING */
+#pricing {
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+.pricing-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #a855f7);
+}
+
+.pricing-badge {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+.pricing-card .price {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.pricing-card .price-note {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.pricing-includes {
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.pricing-includes li {
+  list-style: none;
+  padding: 10px 0;
+  font-size: 15px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.pricing-includes li:last-child {
+  border-bottom: none;
+}
+
+.pricing-includes .check {
+  color: #15803d;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pricing-card .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding: 18px 32px;
+  font-size: 17px;
+}
+
+.pricing-card .guarantee {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.pricing-context {
+  max-width: 520px;
+  margin: 24px auto 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* FAQ */
+#faq {
+  padding: 80px 0;
+}
+
+#faq h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.faq-list {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.faq-item h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 20px 28px;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.faq-item h3:hover {
+  background: var(--bg-alt);
+}
+
+.faq-item h3::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+}
+
+.faq-item.open h3::after {
+  content: '-';
+}
+
+.faq-item p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 0 28px 20px;
+  display: none;
+  margin: 0;
+}
+
+.faq-item.open p {
+  display: block;
+}
+
+/* FOOTER */
+footer {
+  background: var(--text);
+  color: #fff;
+  padding: 60px 0 40px;
+}
+
+.footer-cta {
+  text-align: center;
+  max-width: 440px;
+  margin: 0 auto 40px;
+}
+
+.footer-cta h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.footer-cta p {
+  font-size: 14px;
+  color: #a1a1aa;
+  margin-bottom: 20px;
+}
+
+.email-form {
+  display: flex;
+  gap: 8px;
+}
+
+.email-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.email-form input::placeholder {
+  color: #71717a;
+}
+
+.email-form input:focus {
+  border-color: var(--accent);
+}
+
+.email-form button {
+  padding: 12px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.email-form button:hover {
+  background: var(--accent-hover);
+}
+
+@media (max-width: 480px) {
+  .email-form { flex-direction: column; }
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 13px;
+  color: #52525b;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">The AI <span>Playbook</span></a>
+    <div class="nav-links">
+      <a href="#what-is-it">What Is It</a>
+      <a href="#power">What It Does</a>
+      <a href="#curriculum">Full Curriculum</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#community">Community</a>
+      <a href="#pricing" class="nav-cta">Get the Guide</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <video style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.15;" autoplay muted loop playsinline>
+    <source src="background.mp4" type="video/mp4">
+  </video>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="hero-badge">26 Chapters. 40+ AI Tools. Full Curriculum.</div>
+    <h1>Stop paying for AI you barely use. <span class="highlight">Start building with it.</span></h1>
+    <p>The complete curriculum for mastering AI. 26 chapters covering Claude, ChatGPT, 40+ tools, interactive exercises, quizzes, and a built-in AI assistant. From total beginner to running AI systems 24/7.</p>
+    <a href="#pricing" class="btn-primary">Get the Full Curriculum</a>
+    <div class="hero-sub">One-time purchase. 30-day money-back guarantee.</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-number">26</div>
+        <div class="stat-label">Chapters</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Interactive Tools</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Pages</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number">Zero</div>
+        <div class="stat-label">Coding Experience Needed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS CLAUDE CODE -->
+<section id="what-is-it" style="padding:60px 0;background:var(--bg);">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Wait, what is Claude Code?</p>
+    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2;">Claude Code is AI that lives on your computer and does real work.</h2>
+    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;margin-bottom:16px;">You know ChatGPT and Claude.ai, where you type in a chat box and get text back. Claude Code is different. It runs directly on your machine. It can read your files, write code, build websites, send emails, connect to your calendar, and run tasks in the background while you do other things.</p>
+    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;">Think of it as going from texting an assistant to having one sit at your desk with full access to your tools. That is the jump. And most people do not know it exists.</p>
+  </div>
+</section>
+
+<!-- POWER -->
+<section id="power">
+  <div class="container">
+    <div class="section-label">This is not ChatGPT</div>
+    <h2>Claude Code does not just answer questions.<br>It builds things.</h2>
+    <p class="section-sub">While everyone else is copying and pasting from chatbots, Claude Code connects to your computer and actually does the work.</p>
+    <div class="power-grid">
+      <div class="power-card">
+        <div class="power-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Build entire applications</h3>
+        <p>Full web apps, dashboards, tools. Planned, coded, and deployed. Not snippets. Working software.</p>
+      </div>
+      <div class="power-card">
+        <div class="power-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Run 24/7 on a server</h3>
+        <p>Set it up on a Mac Mini or cloud instance. It works while you sleep, handling tasks on autopilot.</p>
+      </div>
+      <div class="power-card">
+        <div class="power-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Connect to Gmail, Calendar, Slack</h3>
+        <p>Read your inbox, draft responses, schedule meetings, post updates. Real integrations, not plugins.</p>
+      </div>
+      <div class="power-card">
+        <div class="power-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>Automate research and reporting</h3>
+        <p>Competitor analysis, market research, daily briefings. Set the system once. Get results every day.</p>
+      </div>
+      <div class="power-card">
+        <div class="power-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Control it from your phone</h3>
+        <p>Start tasks, check progress, get notifications. Your AI assistant runs headless and reports back to you.</p>
+      </div>
+      <div class="power-card">
+        <div class="power-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Stack workflows together</h3>
+        <p>Chain tasks into systems. Monitor email, research the sender, draft a reply, log it to a spreadsheet. All automatic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAP -->
+<section id="gap">
+  <div class="container">
+    <div class="gap-content">
+      <p class="big-quote">You are paying $20/month for the most powerful AI ever built and using it to check your grammar.</p>
+      <p class="gap-follow">The gap between what Claude can do and what you are doing with it is where all the value is.</p>
+      <p class="gap-close">This curriculum closes that gap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FULL CURRICULUM -->
+<section id="curriculum">
+  <div class="container">
+    <div class="section-label">The Full Curriculum</div>
+    <h2>26 chapters. Not a quick-start guide. A complete education.</h2>
+    <p class="section-sub">Every chapter builds on the last. You start with the fundamentals and end with AI systems running 24/7 on your behalf. No filler. No fluff. Every page earns its place.</p>
+
+    <!-- TRACK 1: UNDERSTANDING AI AND CLAUDE -->
+    <div class="curriculum-track">
+      <div class="track-label">Part 1: Understanding AI and Claude</div>
+      <div class="modules">
+        <div class="module">
+          <div class="module-number">01</div>
+          <div class="module-body">
+            <h3>How AI Got Here</h3>
+            <p>From rule-based systems to transformers to LLMs. The major players, what AI can and cannot do today, and why right now is the best time to learn this. Your complete introduction.</p>
+          </div>
+          <div class="module-result">Full context</div>
+        </div>
+        <div class="module">
+          <div class="module-number">02</div>
+          <div class="module-body">
+            <h3>What Claude Actually Is</h3>
+            <p>Not a chatbot. Not a search engine. What makes Claude different from every other AI tool, and why that matters for what you are about to build.</p>
+          </div>
+          <div class="module-result">Clear mental model</div>
+        </div>
+        <div class="module">
+          <div class="module-number">03</div>
+          <div class="module-body">
+            <h3>Make Claude Yours</h3>
+            <p>Personalization strategies that transform generic AI into your AI. Custom instructions, memory, preferences, and communication style.</p>
+          </div>
+          <div class="module-result">Personalized setup</div>
+        </div>
+        <div class="module">
+          <div class="module-number">04</div>
+          <div class="module-body">
+            <h3>You Are Not Cheating</h3>
+            <p>The mindset chapter. Why using AI is not a shortcut, it is a skill. How to think about AI as a tool that amplifies your work, not replaces it.</p>
+          </div>
+          <div class="module-result">Confidence unlocked</div>
+        </div>
+        <div class="module">
+          <div class="module-number">05</div>
+          <div class="module-body">
+            <h3>AI Literacy Fundamentals</h3>
+            <p>Prompting, context windows, tokens, temperature, models. The core concepts explained in plain language so you actually understand what is happening.</p>
+          </div>
+          <div class="module-result">Speak the language</div>
+        </div>
+        <div class="module">
+          <div class="module-number">06</div>
+          <div class="module-body">
+            <h3>Coming from ChatGPT</h3>
+            <p>Already using ChatGPT? Here is what is different, what is better, what to bring with you, and what to leave behind.</p>
+          </div>
+          <div class="module-result">Smooth transition</div>
+        </div>
+        <div class="module">
+          <div class="module-number">07</div>
+          <div class="module-body">
+            <h3>Power Tricks That Change Everything</h3>
+            <p>The techniques that separate casual users from people who get 10x the output. Chaining, structured prompts, role assignment, and constraint-based prompting.</p>
+          </div>
+          <div class="module-result">Immediate results</div>
+        </div>
+        <div class="module">
+          <div class="module-number">08</div>
+          <div class="module-body">
+            <h3>How to Verify AI Output</h3>
+            <p>AI makes mistakes. Here is how to catch them, verify facts, test code, and build a verification habit that keeps you safe.</p>
+          </div>
+          <div class="module-result">Trust but verify</div>
+        </div>
+        <div class="module">
+          <div class="module-number">09</div>
+          <div class="module-body">
+            <h3>Claude's Limitations (And When to Use Other Tools)</h3>
+            <p>What Claude cannot do. Where it struggles. Rate limits. Honest comparison with ChatGPT and Gemini. When to use a different tool entirely.</p>
+          </div>
+          <div class="module-result">Realistic expectations</div>
+        </div>
+        <div class="module">
+          <div class="module-number">10</div>
+          <div class="module-body">
+            <h3>Your First Real Conversation</h3>
+            <p>Put it all together. Real conversations for real tasks, with walkthroughs for different professions and use cases.</p>
+          </div>
+          <div class="module-result">Hands-on practice</div>
+        </div>
+        <div class="module">
+          <div class="module-number">11</div>
+          <div class="module-body">
+            <h3>Workflows That Save Hours</h3>
+            <p>Email triage, research automation, report generation, content creation pipelines. Real workflows you can set up today.</p>
+          </div>
+          <div class="module-result">3+ hours saved daily</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 2: CLAUDE CODE -->
+    <div class="curriculum-track">
+      <div class="track-label">Part 2: Entering Claude Code</div>
+      <div class="modules">
+        <div class="module">
+          <div class="module-number">12</div>
+          <div class="module-body">
+            <h3>Why Claude Code Changes Everything</h3>
+            <p>The leap from chat to terminal. What Claude Code can do that regular Claude cannot, and why this changes everything about how you work with AI.</p>
+          </div>
+          <div class="module-result">Paradigm shift</div>
+        </div>
+        <div class="module">
+          <div class="module-number">13</div>
+          <div class="module-body">
+            <h3>Terminal Basics for Humans</h3>
+            <p>Never used a terminal? Start here. The 20 commands you actually need, explained with zero assumptions about your background.</p>
+          </div>
+          <div class="module-result">Terminal confidence</div>
+        </div>
+        <div class="module">
+          <div class="module-number">14</div>
+          <div class="module-body">
+            <h3>Installing Claude Code</h3>
+            <p>Step-by-step installation on Mac, Windows, and Linux. API keys, configuration, and verification. Copy-paste every command.</p>
+          </div>
+          <div class="module-result">Up and running</div>
+        </div>
+        <div class="module">
+          <div class="module-number">15</div>
+          <div class="module-body">
+            <h3>Your First Session</h3>
+            <p>Your first hands-on session with Claude Code. Navigate, explore, and start working with AI in the terminal.</p>
+          </div>
+          <div class="module-result">First session complete</div>
+        </div>
+        <div class="module">
+          <div class="module-number">16</div>
+          <div class="module-body">
+            <h3>Building Your First Real Thing</h3>
+            <p>Build something real. A working web application, planned, coded, and running on your machine. No prior experience needed.</p>
+          </div>
+          <div class="module-result">Ship in 2 hours</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 3: MAKING CLAUDE CODE POWERFUL -->
+    <div class="curriculum-track">
+      <div class="track-label">Part 3: Making Claude Code Powerful</div>
+      <div class="modules">
+        <div class="module">
+          <div class="module-number">17</div>
+          <div class="module-body">
+            <h3>The CLAUDE.md File</h3>
+            <p>Give Claude permanent memory of your preferences, projects, and instructions. The file that makes Claude Code truly personal.</p>
+          </div>
+          <div class="module-result">Persistent memory</div>
+        </div>
+        <div class="module">
+          <div class="module-number">18</div>
+          <div class="module-body">
+            <h3>Connecting Claude to Your Life (MCP Servers)</h3>
+            <p>Gmail, Google Calendar, Slack, spreadsheets, databases. Connect Claude to the tools you already use and let it operate across all of them.</p>
+          </div>
+          <div class="module-result">Full integration</div>
+        </div>
+        <div class="module">
+          <div class="module-number">19</div>
+          <div class="module-body">
+            <h3>Automating the Boring Stuff</h3>
+            <p>Cron jobs, scheduled scripts, and automated pipelines. Set up systems that run without you touching them.</p>
+          </div>
+          <div class="module-result">Set and forget</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 4: GOING FURTHER -->
+    <div class="curriculum-track">
+      <div class="track-label">Part 4: Going Further</div>
+      <div class="modules">
+        <div class="module">
+          <div class="module-number">20</div>
+          <div class="module-body">
+            <h3>Running Claude Code 24/7</h3>
+            <p>Deploy Claude Code on a dedicated machine or server. Mac Mini setup, remote access, monitoring, and maintenance. Your AI works while you sleep.</p>
+          </div>
+          <div class="module-result">AI that never stops</div>
+        </div>
+        <div class="module">
+          <div class="module-number">21</div>
+          <div class="module-body">
+            <h3>Claude on Your Phone (Telegram Bot)</h3>
+            <p>Control Claude Code from your phone. Start tasks, check progress, get notifications wherever you are.</p>
+          </div>
+          <div class="module-result">Mobile control</div>
+        </div>
+        <div class="module">
+          <div class="module-number">22</div>
+          <div class="module-body">
+            <h3>The 10 Power Projects</h3>
+            <p>Ten complete project templates you can build immediately. Websites, dashboards, automations, digital products, and more.</p>
+          </div>
+          <div class="module-result">Portfolio ready</div>
+        </div>
+        <div class="module">
+          <div class="module-number">23</div>
+          <div class="module-body">
+            <h3>The Complete AI Tool Ecosystem</h3>
+            <p>40+ AI tools across 11 categories: image generation, video, voice, code, research, design, and more. Pricing, difficulty levels, and best use cases for each.</p>
+          </div>
+          <div class="module-result">Full tool reference</div>
+        </div>
+        <div class="module">
+          <div class="module-number">24</div>
+          <div class="module-body">
+            <h3>The Future of AI and Your Career</h3>
+            <p>Where AI is heading: agents, multimodal, real-time, personal AI. The regulation landscape. Skills that will matter most. How to stay ahead.</p>
+          </div>
+          <div class="module-result">Future-proofed</div>
+        </div>
+        <div class="module">
+          <div class="module-number">25</div>
+          <div class="module-body">
+            <h3>Security and Privacy</h3>
+            <p>What data goes where. API key safety. What to never put into AI. How to use Claude Code without exposing sensitive information.</p>
+          </div>
+          <div class="module-result">Stay protected</div>
+        </div>
+        <div class="module">
+          <div class="module-number">26</div>
+          <div class="module-body">
+            <h3>What You Built</h3>
+            <p>A look back at everything you have accomplished. Your complete AI toolkit, from first conversation to 24/7 automation.</p>
+          </div>
+          <div class="module-result">Complete mastery</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE TOOLS -->
+    <div class="tools-section">
+      <h3>Built-in Interactive Tools</h3>
+      <p class="tools-sub">This is not a PDF. It is an interactive experience that runs in your browser.</p>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h4>ROI Calculator</h4>
+          <p>Enter your salary and daily tasks. See exactly how many hours and dollars Claude saves you per year.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h4>Prompt Builder</h4>
+          <p>Step-by-step tool that helps you build effective prompts for any task. Select your goal, add context, get a ready-to-use prompt.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>AI Assistant</h4>
+          <p>Stuck on a chapter? Ask the built-in assistant. It knows the guide content and gives you personalized help.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Chapter Quizzes</h4>
+          <p>Test your understanding after each section. Immediate feedback so you know what stuck and what to review.</p>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h4>Personalized Learning Path</h4>
+          <p>Answer a few questions about your experience level and goals. Get a custom reading order tailored to you.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="container">
+    <div class="section-label">Who this is for</div>
+    <h2>Built for doers, not developers</h2>
+    <div class="persona-grid">
+      <div class="persona">
+        <div class="persona-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Business owners</h3>
+        <p>You want to automate client onboarding, reporting, and operations. You do not want to hire a developer to do it.</p>
+      </div>
+      <div class="persona">
+        <div class="persona-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Professionals who want to 10x output</h3>
+        <p>You are good at your job. You want AI to handle the repetitive parts so you can focus on the work that matters.</p>
+      </div>
+      <div class="persona">
+        <div class="persona-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Anyone paying for AI and underusing it</h3>
+        <p>You know there is more to Claude, ChatGPT, and other AI platforms than chat. You just need someone to show you what is possible and how to set it up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-card">
+      <div class="pricing-badge">Launch Price</div>
+      <div class="price">$39</div>
+      <div class="price-note">One-time purchase. Yours forever.</div>
+      <ul class="pricing-includes">
+        <li><span class="check">&check;</span> The complete AI Playbook curriculum (26 chapters, 150+ pages)</li>
+        <li><span class="check">&check;</span> Interactive ROI calculator, prompt builder, and AI assistant</li>
+        <li><span class="check">&check;</span> Chapter quizzes and personalized learning path</li>
+        <li><span class="check">&check;</span> Copy-paste prompts, templates, and workflow blueprints</li>
+        <li><span class="check">&check;</span> Step-by-step setup for Claude Code, APIs, and 24/7 automation</li>
+        <li><span class="check">&check;</span> All future updates included at no extra cost</li>
+      </ul>
+      <a href="#" class="btn-primary">Get the Full Curriculum</a>
+      <div class="guarantee">30-day money-back guarantee. No questions asked.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2>Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>Do I need to be technical?</h3>
+        <p>No. The guide is written for people with zero coding experience. Every step is explained clearly, with exact commands you can copy and paste. There is an entire chapter on terminal basics for non-developers.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I use ChatGPT, not Claude?</h3>
+        <p>There is a dedicated chapter for people coming from ChatGPT. Most of the strategy and prompting techniques apply to any AI tool. But the automation, coding, and 24/7 sections are specific to Claude Code, which is where the real leverage is.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How is this different from YouTube tutorials?</h3>
+        <p>Tutorials show you one trick at a time. This is a structured curriculum with 26 chapters that build on each other, interactive tools, quizzes, and a personalized learning path. No gaps, no guessing, no hunting for the next video.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What are the interactive tools?</h3>
+        <p>The guide includes a built-in ROI calculator, a prompt builder, an AI assistant, chapter quizzes, and a personalized learning path. Plus a complete reference guide to 40+ AI tools with current pricing. These are not static pages. They run in your browser and give you real, personalized output.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why $39 and not $199 like other courses?</h3>
+        <p>Because the goal is to get this into as many hands as possible. This is 26 chapters with a 40+ tool reference guide, interactive tools, and a built-in AI assistant. The content competes with courses that charge $100 to $200, but this is a launch price. It will go up.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does it work? Is it a video course?</h3>
+        <p>It is an interactive HTML guide that runs in your browser. You open the file and start reading. Interactive tools, quizzes, and the AI assistant are all built in. No logins, no streaming, no platform. It is yours to keep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community" style="padding: 80px 0; background: var(--bg);">
+  <div class="container" style="max-width: 680px; text-align: center;">
+    <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">Stay Connected</p>
+    <h2 style="font-size: clamp(28px, 4vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">The guide is the beginning.<br>The community keeps you ahead.</h2>
+    <p style="font-size: 17px; color: var(--text-secondary); max-width: 520px; margin: 0 auto 40px; line-height: 1.6;">AI changes every week. New tools, new capabilities, new strategies. Join other learners and practitioners who are building with AI every day.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; margin-bottom: 32px;">
+      <div style="background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px;">
+        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Weekly AI Tips</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.55; margin-bottom: 20px;">Get weekly AI tips, new tools, and playbook updates delivered to your inbox. Free.</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed!'; this.querySelector('button').style.background='#15803d';" style="display: flex; gap: 8px;">
+          <input type="email" placeholder="you@email.com" required style="flex: 1; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; background: var(--bg); color: var(--text);">
+          <button type="submit" style="padding: 10px 18px; background: var(--accent); color: white; border: none; border-radius: 8px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;">Subscribe</button>
+        </form>
+      </div>
+      <div style="background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px;">
+        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Join the Community</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.55; margin-bottom: 20px;">Ask questions, share prompts, meet other learners. Open to everyone. Free.</p>
+        <a href="https://discord.gg/theaiplaybook" target="_blank" style="display: inline-block; padding: 10px 24px; background: #5865F2; color: white; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity 0.2s;">Join Discord</a>
+      </div>
+    </div>
+
+    <p style="font-size: 14px; color: var(--text-muted);">This guide gets you started. The community keeps you current.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-cta">
+      <h3>Get 3 free Claude Code workflows</h3>
+      <p>Practical automations you can set up today. Delivered to your inbox.</p>
+      <form class="email-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="you@email.com" required>
+        <button type="submit">Send Them</button>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      The AI Playbook &copy; 2026. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item h3').forEach(function(h3){
+  h3.addEventListener('click', function(){
+    var item = this.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
