@@ -434,7 +434,14 @@ section {
   grid-template-columns: auto 1fr auto;
   gap: 20px;
   align-items: center;
-  transition: box-shadow 0.2s;
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.module:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(109, 40, 217, 0.12);
+  transform: translateY(-2px);
 }
 
 .module:hover {
@@ -892,7 +899,7 @@ footer {
   </video>
   <div class="container" style="position:relative;z-index:2;">
     <div class="hero-badge">26 Chapters. 40+ AI Tools. Full Curriculum.</div>
-    <h1>Stop paying for AI you barely use. <span class="highlight">Start building with it.</span></h1>
+    <h1>Stop paying for AI you<br>barely use.<br><span class="highlight">Start building with it.</span></h1>
     <p>The complete curriculum for mastering AI. 26 chapters covering Claude, ChatGPT, 40+ tools, interactive exercises, quizzes, and a built-in AI assistant. From total beginner to running AI systems 24/7.</p>
     <a href="#pricing" class="btn-primary">Get the Full Curriculum</a>
     <div class="hero-sub">One-time purchase. 30-day money-back guarantee.</div>
@@ -1029,7 +1036,7 @@ footer {
         <div class="module">
           <div class="module-number">04</div>
           <div class="module-body">
-            <h3>You Are Not Cheating</h3>
+            <h3>When to Implement AI</h3>
             <p>The mindset chapter. Why using AI is not a shortcut, it is a skill. How to think about AI as a tool that amplifies your work, not replaces it.</p>
           </div>
           <div class="module-result">Confidence unlocked</div>
@@ -1109,7 +1116,7 @@ footer {
           <div class="module-number">13</div>
           <div class="module-body">
             <h3>Terminal Basics for Humans</h3>
-            <p>Never used a terminal? Start here. The 20 commands you actually need, explained with zero assumptions about your background.</p>
+            <p>Never used a terminal? Start here. The 7 commands you actually need, explained with zero assumptions about your background.</p>
           </div>
           <div class="module-result">Terminal confidence</div>
         </div>
@@ -1250,8 +1257,8 @@ footer {
           <div class="tool-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </div>
-          <h4>Prompt Builder</h4>
-          <p>Step-by-step tool that helps you build effective prompts for any task. Select your goal, add context, get a ready-to-use prompt.</p>
+          <h4>Prompt Builder (15 Categories)</h4>
+          <p>Build ready-to-use prompts across 15 categories: email, content, marketing, business ops, legal, finance, code, health, career, and more. Each prompt includes quality standards tuned to the category.</p>
         </div>
         <div class="tool-card">
           <div class="tool-icon">
@@ -1272,7 +1279,7 @@ footer {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
           </div>
           <h4>Personalized Learning Path</h4>
-          <p>Answer a few questions about your experience level and goals. Get a custom reading order tailored to you.</p>
+          <p>Select multiple roles and goals. Get a custom reading order, personalized intro, and tips that reflect your full profile. Not just one persona.</p>
         </div>
       </div>
     </div>
@@ -1320,7 +1327,7 @@ footer {
       <div class="price-note">One-time purchase. Yours forever.</div>
       <ul class="pricing-includes">
         <li><span class="check">&check;</span> The complete AI Playbook curriculum (26 chapters, 150+ pages)</li>
-        <li><span class="check">&check;</span> Interactive ROI calculator, prompt builder, and AI assistant</li>
+        <li><span class="check">&check;</span> Interactive ROI calculator, 15-category prompt builder, AI assistant, and quick reference card</li>
         <li><span class="check">&check;</span> Chapter quizzes and personalized learning path</li>
         <li><span class="check">&check;</span> Copy-paste prompts, templates, and workflow blueprints</li>
         <li><span class="check">&check;</span> Step-by-step setup for Claude Code, APIs, and 24/7 automation</li>
@@ -1351,7 +1358,7 @@ footer {
       </div>
       <div class="faq-item">
         <h3>What are the interactive tools?</h3>
-        <p>The guide includes a built-in ROI calculator, a prompt builder, an AI assistant, chapter quizzes, and a personalized learning path. Plus a complete reference guide to 40+ AI tools with current pricing. These are not static pages. They run in your browser and give you real, personalized output.</p>
+        <p>The guide includes a built-in ROI calculator, a 15-category prompt builder, an AI assistant with 350+ answers, chapter quizzes, a personalized multi-persona learning path, a quick reference card, and collapsible chapter groups with progress tracking. Plus a complete reference guide to 40+ AI tools with current pricing. These are not static pages. They run in your browser and give you real, personalized output.</p>
       </div>
       <div class="faq-item">
         <h3>Why $39 and not $199 like other courses?</h3>
@@ -1395,14 +1402,6 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="footer-cta">
-      <h3>Get 3 free Claude Code workflows</h3>
-      <p>Practical automations you can set up today. Delivered to your inbox.</p>
-      <form class="email-form" onsubmit="event.preventDefault();">
-        <input type="email" placeholder="you@email.com" required>
-        <button type="submit">Send Them</button>
-      </form>
-    </div>
     <div class="footer-bottom">
       The AI Playbook &copy; 2026. All rights reserved.
     </div>
