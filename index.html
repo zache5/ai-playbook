@@ -417,41 +417,6 @@ section {
   color: var(--text-muted);
   margin-bottom: 16px;
   padding-left: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  user-select: none;
-}
-
-.track-label::after {
-  content: '+';
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--text-muted);
-  transition: transform 0.3s;
-}
-
-.curriculum-track.open .track-label::after {
-  content: '-';
-}
-
-.curriculum-track .modules {
-  display: none;
-}
-
-.curriculum-track.open .modules {
-  display: flex;
-}
-
-.track-count {
-  font-weight: 600;
-  font-size: 11px;
-  color: var(--accent);
-  background: var(--accent-light);
-  padding: 2px 8px;
-  border-radius: 6px;
-  margin-right: 8px;
 }
 
 .modules {
@@ -477,6 +442,10 @@ section {
   border-color: var(--accent);
   box-shadow: 0 4px 20px rgba(109, 40, 217, 0.12);
   transform: translateY(-2px);
+}
+
+.module:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .module-number {
@@ -929,11 +898,11 @@ footer {
     <source src="background.mp4" type="video/mp4">
   </video>
   <div class="container" style="position:relative;z-index:2;">
-    <div class="hero-badge">26 Chapters. 40+ AI Tools. Interactive.</div>
-    <h1>You are paying for AI<br>and barely using it.<br><span class="highlight">Fix that today.</span></h1>
-    <p>26 chapters that take you from "I tried ChatGPT once" to building real things with AI, automating your work, and running Claude Code 24/7. No coding required. No fluff. Just the stuff that actually works.</p>
-    <a href="#pricing" class="btn-primary">Get the Full Curriculum &middot; $39</a>
-    <div class="hero-sub">One-time purchase. 30-day money-back guarantee. Yours forever.</div>
+    <div class="hero-badge">26 Chapters. 40+ AI Tools. Full Curriculum.</div>
+    <h1>Stop paying for AI you<br>barely use.<br><span class="highlight">Start building with it.</span></h1>
+    <p>The complete curriculum for mastering AI. 26 chapters covering Claude, ChatGPT, 40+ tools, interactive exercises, quizzes, and a built-in AI assistant. From total beginner to running AI systems 24/7.</p>
+    <a href="#pricing" class="btn-primary">Get the Full Curriculum</a>
+    <div class="hero-sub">One-time purchase. 30-day money-back guarantee.</div>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="stat-number">26</div>
@@ -944,8 +913,8 @@ footer {
         <div class="stat-label">Interactive Tools</div>
       </div>
       <div class="hero-stat">
-        <div class="stat-number">40+</div>
-        <div class="stat-label">AI Tools Covered</div>
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Pages</div>
       </div>
       <div class="hero-stat">
         <div class="stat-number">Zero</div>
@@ -959,18 +928,18 @@ footer {
 <section id="what-is-it" style="padding:60px 0;background:var(--bg);">
   <div class="container" style="max-width:800px;text-align:center;">
     <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Wait, what is Claude Code?</p>
-    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2;">AI that does not just talk. It does the work.</h2>
-    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;margin-bottom:16px;">You know ChatGPT and Claude.ai. You type a question, you get text back. Claude Code is different. It runs on your computer. It reads your files, builds websites, sends emails, connects to your calendar, and handles tasks in the background while you do other things.</p>
-    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;">It is the difference between texting a friend for advice and having someone sit at your desk and do the work. Most people do not know this exists yet.</p>
+    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2;">Claude Code is AI that lives on your computer and does real work.</h2>
+    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;margin-bottom:16px;">You know ChatGPT and Claude.ai, where you type in a chat box and get text back. Claude Code is different. It runs directly on your machine. It can read your files, write code, build websites, send emails, connect to your calendar, and run tasks in the background while you do other things.</p>
+    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;">Think of it as going from texting an assistant to having one sit at your desk with full access to your tools. That is the jump. And most people do not know it exists.</p>
   </div>
 </section>
 
 <!-- POWER -->
 <section id="power">
   <div class="container">
-    <div class="section-label">Beyond chatbots</div>
-    <h2>Claude Code does not answer questions.<br>It does the work.</h2>
-    <p class="section-sub">While everyone is copy-pasting from chatbots, Claude Code connects to your computer and builds real things.</p>
+    <div class="section-label">This is not ChatGPT</div>
+    <h2>Claude Code does not just answer questions.<br>It builds things.</h2>
+    <p class="section-sub">While everyone else is copying and pasting from chatbots, Claude Code connects to your computer and actually does the work.</p>
     <div class="power-grid">
       <div class="power-card">
         <div class="power-icon">
@@ -1022,9 +991,9 @@ footer {
 <section id="gap">
   <div class="container">
     <div class="gap-content">
-      <p class="big-quote">You are paying $20/month for the most powerful AI ever built. And using it to check your grammar.</p>
-      <p class="gap-follow">The distance between what AI can do and what you are actually doing with it is massive. That gap is where the value sits.</p>
-      <p class="gap-close">This guide closes it.</p>
+      <p class="big-quote">You are paying $20/month for the most powerful AI ever built and using it to check your grammar.</p>
+      <p class="gap-follow">The gap between what Claude can do and what you are doing with it is where all the value is.</p>
+      <p class="gap-close">This curriculum closes that gap.</p>
     </div>
   </div>
 </section>
@@ -1032,13 +1001,13 @@ footer {
 <!-- FULL CURRICULUM -->
 <section id="curriculum">
   <div class="container">
-    <div class="section-label">Full Curriculum</div>
-    <h2>26 chapters. Built to be read in order.</h2>
-    <p class="section-sub">Every chapter builds on the last. You start with the fundamentals and end running AI systems 24/7. No filler. Click each section to see what is inside.</p>
+    <div class="section-label">The Full Curriculum</div>
+    <h2>26 chapters. Not a quick-start guide. A complete education.</h2>
+    <p class="section-sub">Every chapter builds on the last. You start with the fundamentals and end with AI systems running 24/7 on your behalf. No filler. No fluff. Every page earns its place.</p>
 
     <!-- TRACK 1: UNDERSTANDING AI AND CLAUDE -->
-    <div class="curriculum-track open">
-      <div class="track-label"><span>Part 1: Understanding AI and Claude <span class="track-count">11 chapters</span></span></div>
+    <div class="curriculum-track">
+      <div class="track-label">Part 1: Understanding AI and Claude</div>
       <div class="modules">
         <div class="module">
           <div class="module-number">01</div>
@@ -1070,7 +1039,7 @@ footer {
             <h3>When to Implement AI</h3>
             <p>The mindset chapter. Why using AI is not a shortcut, it is a skill. How to think about AI as a tool that amplifies your work, not replaces it.</p>
           </div>
-          <div class="module-result">Right mindset</div>
+          <div class="module-result">Confidence unlocked</div>
         </div>
         <div class="module">
           <div class="module-number">05</div>
@@ -1092,7 +1061,7 @@ footer {
           <div class="module-number">07</div>
           <div class="module-body">
             <h3>Power Tricks That Change Everything</h3>
-            <p>10 techniques that separate casual users from people who get 10x the output. Step-by-step reasoning, extended thinking, self-critique, meta-prompting, and more.</p>
+            <p>The techniques that separate casual users from people who get 10x the output. Chaining, structured prompts, role assignment, and constraint-based prompting.</p>
           </div>
           <div class="module-result">Immediate results</div>
         </div>
@@ -1133,7 +1102,7 @@ footer {
 
     <!-- TRACK 2: CLAUDE CODE -->
     <div class="curriculum-track">
-      <div class="track-label"><span>Part 2: Entering Claude Code <span class="track-count">5 chapters</span></span></div>
+      <div class="track-label">Part 2: Entering Claude Code</div>
       <div class="modules">
         <div class="module">
           <div class="module-number">12</div>
@@ -1180,7 +1149,7 @@ footer {
 
     <!-- TRACK 3: MAKING CLAUDE CODE POWERFUL -->
     <div class="curriculum-track">
-      <div class="track-label"><span>Part 3: Making Claude Code Powerful <span class="track-count">3 chapters</span></span></div>
+      <div class="track-label">Part 3: Making Claude Code Powerful</div>
       <div class="modules">
         <div class="module">
           <div class="module-number">17</div>
@@ -1211,7 +1180,7 @@ footer {
 
     <!-- TRACK 4: GOING FURTHER -->
     <div class="curriculum-track">
-      <div class="track-label"><span>Part 4: Going Further <span class="track-count">7 chapters</span></span></div>
+      <div class="track-label">Part 4: Going Further</div>
       <div class="modules">
         <div class="module">
           <div class="module-number">20</div>
@@ -1275,7 +1244,7 @@ footer {
     <!-- INTERACTIVE TOOLS -->
     <div class="tools-section">
       <h3>Built-in Interactive Tools</h3>
-      <p class="tools-sub">Not a PDF. An interactive app that runs in your browser with real tools you will use.</p>
+      <p class="tools-sub">This is not a PDF. It is an interactive experience that runs in your browser.</p>
       <div class="tools-grid">
         <div class="tool-card">
           <div class="tool-icon">
@@ -1322,28 +1291,28 @@ footer {
 <section id="who">
   <div class="container">
     <div class="section-label">Who this is for</div>
-    <h2>Built for people who build things, not developers</h2>
+    <h2>Built for doers, not developers</h2>
     <div class="persona-grid">
       <div class="persona">
         <div class="persona-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
         <h3>Business owners</h3>
-        <p>Automate proposals, reports, and client communication without hiring a developer.</p>
+        <p>You want to automate client onboarding, reporting, and operations. You do not want to hire a developer to do it.</p>
       </div>
       <div class="persona">
         <div class="persona-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <h3>Professionals who want more output</h3>
-        <p>You are good at your job. You want AI to handle the repetitive stuff so you can focus on the work that matters.</p>
+        <h3>Professionals who want to 10x output</h3>
+        <p>You are good at your job. You want AI to handle the repetitive parts so you can focus on the work that matters.</p>
       </div>
       <div class="persona">
         <div class="persona-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
-        <h3>Anyone paying for AI and barely using it</h3>
-        <p>You know there is more to AI than asking it questions. You just need someone to show you what is possible.</p>
+        <h3>Anyone paying for AI and underusing it</h3>
+        <p>You know there is more to Claude, ChatGPT, and other AI platforms than chat. You just need someone to show you what is possible and how to set it up.</p>
       </div>
     </div>
   </div>
@@ -1357,7 +1326,7 @@ footer {
       <div class="price">$39</div>
       <div class="price-note">One-time purchase. Yours forever.</div>
       <ul class="pricing-includes">
-        <li><span class="check">&check;</span> The complete AI Playbook curriculum (26 chapters + appendices)</li>
+        <li><span class="check">&check;</span> The complete AI Playbook curriculum (26 chapters, 150+ pages)</li>
         <li><span class="check">&check;</span> Interactive ROI calculator, 15-category prompt builder, AI assistant, and quick reference card</li>
         <li><span class="check">&check;</span> Chapter quizzes and personalized learning path</li>
         <li><span class="check">&check;</span> Copy-paste prompts, templates, and workflow blueprints</li>
@@ -1377,27 +1346,27 @@ footer {
     <div class="faq-list">
       <div class="faq-item">
         <h3>Do I need to be technical?</h3>
-        <p>No. Zero coding experience required. Every command is copy-paste. There is a full chapter on terminal basics written for non-developers.</p>
+        <p>No. The guide is written for people with zero coding experience. Every step is explained clearly, with exact commands you can copy and paste. There is an entire chapter on terminal basics for non-developers.</p>
       </div>
       <div class="faq-item">
         <h3>What if I use ChatGPT, not Claude?</h3>
-        <p>There is a full chapter for ChatGPT users. The prompting and strategy chapters work with any AI tool. The Claude Code sections are Claude-specific.</p>
+        <p>There is a dedicated chapter for people coming from ChatGPT. Most of the strategy and prompting techniques apply to any AI tool. But the automation, coding, and 24/7 sections are specific to Claude Code, which is where the real leverage is.</p>
       </div>
       <div class="faq-item">
         <h3>How is this different from YouTube tutorials?</h3>
-        <p>YouTube gives you isolated tricks. This is 26 chapters that build on each other, with quizzes, interactive tools, and a personalized path. No gaps. No guessing what to watch next.</p>
+        <p>Tutorials show you one trick at a time. This is a structured curriculum with 26 chapters that build on each other, interactive tools, quizzes, and a personalized learning path. No gaps, no guessing, no hunting for the next video.</p>
       </div>
       <div class="faq-item">
         <h3>What are the interactive tools?</h3>
-        <p>ROI calculator, 15-category prompt builder, AI assistant (100+ answers covering every chapter), chapter quizzes, personalized learning path, quick reference card, and a 40+ tool directory with current pricing. All built into the guide. Not static pages.</p>
+        <p>The guide includes a built-in ROI calculator, a 15-category prompt builder, an AI assistant with 350+ answers, chapter quizzes, a personalized multi-persona learning path, a quick reference card, and collapsible chapter groups with progress tracking. Plus a complete reference guide to 40+ AI tools with current pricing. These are not static pages. They run in your browser and give you real, personalized output.</p>
       </div>
       <div class="faq-item">
         <h3>Why $39 and not $199 like other courses?</h3>
-        <p>Launch price. The content matches courses charging $100-200. The goal is reach, not margins. The price will go up.</p>
+        <p>Because the goal is to get this into as many hands as possible. This is 26 chapters with a 40+ tool reference guide, interactive tools, and a built-in AI assistant. The content competes with courses that charge $100 to $200, but this is a launch price. It will go up.</p>
       </div>
       <div class="faq-item">
-        <h3>How does it work?</h3>
-        <p>It is an interactive HTML file. Open it in your browser, start reading. Tools, quizzes, and the AI assistant are built in. No accounts, no streaming, no platform. It is a file you own.</p>
+        <h3>How does it work? Is it a video course?</h3>
+        <p>It is an interactive HTML guide that runs in your browser. You open the file and start reading. Interactive tools, quizzes, and the AI assistant are all built in. No logins, no streaming, no platform. It is yours to keep.</p>
       </div>
     </div>
   </div>
@@ -1407,8 +1376,8 @@ footer {
 <section id="community" style="padding: 80px 0; background: var(--bg);">
   <div class="container" style="max-width: 680px; text-align: center;">
     <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">Stay Connected</p>
-    <h2 style="font-size: clamp(28px, 4vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">The guide gets you started.<br>The community keeps you current.</h2>
-    <p style="font-size: 17px; color: var(--text-secondary); max-width: 520px; margin: 0 auto 40px; line-height: 1.6;">AI changes weekly. New tools, new techniques, new possibilities. Connect with other people who are building with AI.</p>
+    <h2 style="font-size: clamp(28px, 4vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">The guide is the beginning.<br>The community keeps you ahead.</h2>
+    <p style="font-size: 17px; color: var(--text-secondary); max-width: 520px; margin: 0 auto 40px; line-height: 1.6;">AI changes every week. New tools, new capabilities, new strategies. Join other learners and practitioners who are building with AI every day.</p>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; margin-bottom: 32px;">
       <div style="background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px;">
@@ -1446,12 +1415,6 @@ document.querySelectorAll('.faq-item h3').forEach(function(h3){
     var wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('open'); });
     if (!wasOpen) item.classList.add('open');
-  });
-});
-
-document.querySelectorAll('.curriculum-track .track-label').forEach(function(label){
-  label.addEventListener('click', function(){
-    this.parentElement.classList.toggle('open');
   });
 });
 </script>
