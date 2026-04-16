@@ -37,25 +37,12 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: none;
-  position: relative;
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  font-size: 19px;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-section {
-  background: rgba(255, 255, 255, 0.82) !important;
-}
-
-.hero {
-  background: none !important;
-}
-
-#power {
-  background: rgba(9, 9, 11, 0.92) !important;
 }
 
 /* NAV */
@@ -65,7 +52,9 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(250, 250, 250, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 nav .nav-inner {
@@ -138,61 +127,90 @@ section {
 }
 
 /* HERO */
-.video-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  pointer-events: none;
-}
-
 .hero {
   padding: 160px 0 100px;
   text-align: center;
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fafafa 0%, #f0ecff 30%, #e8e0ff 50%, #f0ecff 70%, #fafafa 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(109,40,217,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(109,40,217,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-badge {
   display: inline-block;
-  background: rgba(255,255,255,0.85);
+  background: var(--accent-light);
   color: var(--accent);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 8px 20px;
+  padding: 6px 16px;
   border-radius: 100px;
   margin-bottom: 28px;
   letter-spacing: 0.02em;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 
 .hero h1 {
-  font-size: clamp(52px, 8vw, 90px);
+  font-size: clamp(40px, 6vw, 68px);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
   max-width: 950px;
   margin: 0 auto 24px;
-  color: #fff;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5);
+  color: var(--text);
 }
 
 .hero h1 .highlight {
-  color: #7c3aed;
-  -webkit-text-fill-color: #7c3aed;
-  text-shadow: 0 0 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.9);
+  background: linear-gradient(135deg, var(--accent), #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero p {
-  font-size: 22px;
-  color: #fff;
-  font-weight: 600;
+  font-size: 19px;
+  color: var(--text-secondary);
   max-width: 720px;
   margin: 0 auto 40px;
   line-height: 1.6;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.6);
 }
 
 .btn-primary {
@@ -201,9 +219,9 @@ section {
   gap: 8px;
   background: var(--accent);
   color: #fff;
-  padding: 20px 40px;
-  border-radius: 14px;
-  font-size: 20px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
@@ -218,9 +236,8 @@ section {
 
 .hero-sub {
   margin-top: 16px;
-  font-size: 17px;
-  color: rgba(255,255,255,0.7);
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
 .hero-stats {
@@ -240,18 +257,16 @@ section {
 }
 
 .hero-stat .stat-number {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 900;
   letter-spacing: -0.03em;
-  color: #fff;
-  text-shadow: 0 2px 12px rgba(109,40,217,0.8), 0 1px 4px rgba(0,0,0,0.5);
+  color: var(--accent);
 }
 
 .hero-stat .stat-label {
-  font-size: 14px;
-  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  color: var(--text-muted);
   margin-top: 2px;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
 
 @media (max-width: 480px) {
@@ -261,7 +276,7 @@ section {
 
 /* POWER SECTION */
 #power {
-  background: rgba(9, 9, 11, 0.7);
+  background: var(--text);
   color: #fff;
   padding: 80px 0;
 }
@@ -823,7 +838,7 @@ section {
 
 /* FOOTER */
 footer {
-  background: rgba(9, 9, 11, 0.92);
+  background: var(--text);
   color: #fff;
   padding: 60px 0 40px;
 }
@@ -905,10 +920,6 @@ footer {
 </head>
 <body>
 
-<video class="video-bg" autoplay muted loop playsinline>
-  <source src="background.mp4?v=2" type="video/mp4">
-</video>
-
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -932,7 +943,7 @@ footer {
     <h1>You are paying for AI<br>and barely using it.<br><span class="highlight">Fix that today.</span></h1>
     <p>26 chapters that take you from "I tried ChatGPT once" to building real things with AI, automating your work, and running Claude Code 24/7. No coding required. No fluff. Just the stuff that actually works.</p>
     <a href="#pricing" class="btn-primary">Get the Full Curriculum &middot; $50</a>
-    <div class="hero-sub">One-time purchase. Yours forever.</div>
+    <div class="hero-sub">One-time purchase. 30-day money-back guarantee. Yours forever.</div>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="stat-number">26</div>
@@ -955,7 +966,7 @@ footer {
 </section>
 
 <!-- WHAT IS CLAUDE CODE -->
-<section id="what-is-it" style="padding:60px 0;">
+<section id="what-is-it" style="padding:60px 0;background:var(--bg);">
   <div class="container" style="max-width:800px;text-align:center;">
     <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Wait, what is Claude Code?</p>
     <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2;">AI that does not just talk. It does the work.</h2>
@@ -968,7 +979,7 @@ footer {
 <section id="power">
   <div class="container">
     <div class="section-label">Beyond chatbots</div>
-    <h2>Claude Code does not just answer questions.<br>It builds for you.</h2>
+    <h2>Claude Code does not answer questions.<br>It does the work.</h2>
     <p class="section-sub">While everyone is copy-pasting from chatbots, Claude Code connects to your computer and builds real things.</p>
     <div class="power-grid">
       <div class="power-card">
@@ -1032,7 +1043,7 @@ footer {
 <section id="curriculum">
   <div class="container">
     <div class="section-label">Full Curriculum</div>
-    <h2>26 chapters. Specifically designed for you to master the art of using AI.</h2>
+    <h2>26 chapters. Built to be read in order.</h2>
     <p class="section-sub">Every chapter builds on the last. You start with the fundamentals and end running AI systems 24/7. No filler. Click each section to see what is inside.</p>
 
     <!-- TRACK 1: UNDERSTANDING AI AND CLAUDE -->
@@ -1328,7 +1339,7 @@ footer {
 <section id="who">
   <div class="container">
     <div class="section-label">Who this is for</div>
-    <h2>Built for anyone looking to stay ahead of change. No coding experience needed.</h2>
+    <h2>Built for people who build things, not developers</h2>
     <div class="persona-grid">
       <div class="persona">
         <div class="persona-icon">
@@ -1372,7 +1383,7 @@ footer {
         <li><span class="check">&check;</span> All future updates included at no extra cost</li>
       </ul>
       <a href="#" class="btn-primary">Get the Full Curriculum</a>
-      <div class="guarantee">One-time purchase. Yours forever.</div>
+      <div class="guarantee">30-day money-back guarantee. No questions asked.</div>
     </div>
   </div>
 </section>
@@ -1411,7 +1422,7 @@ footer {
 </section>
 
 <!-- COMMUNITY -->
-<section id="community" style="padding: 80px 0;">
+<section id="community" style="padding: 80px 0; background: var(--bg);">
   <div class="container" style="max-width: 680px; text-align: center;">
     <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">Stay Connected</p>
     <h2 style="font-size: clamp(28px, 4vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px;">The guide gets you started.<br>The community keeps you going.</h2>
