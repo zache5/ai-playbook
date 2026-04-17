@@ -406,49 +406,51 @@ section {
 }
 
 .curriculum-track {
-  margin-bottom: 40px;
+  margin-bottom: 12px;
 }
 
 .track-label {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text);
   margin-bottom: 0;
-  padding: 16px 20px;
+  padding: 20px 28px;
   background: var(--bg-white);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
 }
-.track-label:hover { border-color: var(--accent); }
-.track-label .track-time { font-size: 13px; font-weight: 500; color: var(--text-muted); text-transform: none; letter-spacing: 0; }
-.track-label .track-arrow { font-size: 12px; color: var(--text-muted); transition: transform 0.2s; }
+.track-label:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.track-label .track-time { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+.track-label .track-arrow { font-size: 14px; color: var(--accent); transition: transform 0.2s; margin-left: 12px; }
 .track-label.open .track-arrow { transform: rotate(90deg); }
-.modules { display: none; flex-direction: column; gap: 12px; }
-.modules.open { display: flex; margin-top: 8px; }
+.track-label.open { border-color: var(--accent); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.modules { display: none; flex-direction: column; gap: 0; border: 1px solid var(--accent); border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); overflow: hidden; }
+.modules.open { display: flex; }
 
 .module {
   background: var(--bg-white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-light);
+  border-radius: 0;
+  padding: 16px 28px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 16px;
   align-items: center;
-  transition: all 0.25s ease;
+  transition: background 0.2s;
   cursor: pointer;
 }
+.module:last-child { border-bottom: none; }
 
 .module:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-md);
+  background: var(--bg-alt);
 }
 
 .module .module-body p { display: none; margin-top: 8px; }
@@ -887,7 +889,7 @@ footer {
   <div class="nav-inner">
     <a href="#" class="logo">The AI <span>Playbook</span></a>
     <div class="nav-links">
-      <a href="#curriculum">The Course</a>
+      <a href="#what-is-it">What Is It</a>
       <a href="#power">What It Does</a>
       <a href="#curriculum">Full Curriculum</a>
       <a href="#pricing">Pricing</a>
