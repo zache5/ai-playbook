@@ -430,14 +430,8 @@ section {
 .track-label .track-time { font-size: 13px; font-weight: 500; color: var(--text-muted); text-transform: none; letter-spacing: 0; }
 .track-label .track-arrow { font-size: 12px; color: var(--text-muted); transition: transform 0.2s; }
 .track-label.open .track-arrow { transform: rotate(90deg); }
-.modules { display: none; }
+.modules { display: none; flex-direction: column; gap: 12px; }
 .modules.open { display: flex; margin-top: 8px; }
-
-.modules {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 
 .module {
   background: var(--bg-white);
@@ -895,7 +889,7 @@ footer {
   <div class="nav-inner">
     <a href="#" class="logo">The AI <span>Playbook</span></a>
     <div class="nav-links">
-      <a href="#what-is-it">The Course</a>
+      <a href="#curriculum">The Course</a>
       <a href="#power">What It Does</a>
       <a href="#curriculum">Full Curriculum</a>
       <a href="#pricing">Pricing</a>
@@ -951,7 +945,7 @@ footer {
 <!-- POWER -->
 <section id="power">
   <div class="container">
-    <div class="section-label">This is not ChatGPT</div>
+    <div class="section-label">What AI Can Do For You</div>
     <h2>Claude Code does not just answer questions.<br>It builds things.</h2>
     <p class="section-sub">While everyone else is copying and pasting from chatbots, Claude Code connects to your computer and actually does the work.</p>
     <div class="power-grid">
