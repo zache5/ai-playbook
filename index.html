@@ -410,14 +410,28 @@ section {
 }
 
 .track-label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  padding-left: 4px;
+  color: var(--text);
+  margin-bottom: 0;
+  padding: 16px 20px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
 }
+.track-label:hover { border-color: var(--accent); }
+.track-label .track-time { font-size: 13px; font-weight: 500; color: var(--text-muted); text-transform: none; letter-spacing: 0; }
+.track-label .track-arrow { font-size: 12px; color: var(--text-muted); transition: transform 0.2s; }
+.track-label.open .track-arrow { transform: rotate(90deg); }
+.modules { display: none; }
+.modules.open { display: flex; margin-top: 8px; }
 
 .modules {
   display: flex;
@@ -881,7 +895,7 @@ footer {
   <div class="nav-inner">
     <a href="#" class="logo">The AI <span>Playbook</span></a>
     <div class="nav-links">
-      <a href="#what-is-it">What Is It</a>
+      <a href="#what-is-it">The Course</a>
       <a href="#power">What It Does</a>
       <a href="#curriculum">Full Curriculum</a>
       <a href="#pricing">Pricing</a>
@@ -902,7 +916,7 @@ footer {
     <h1>Stop paying for AI you<br>barely use.<br><span class="highlight">Start building with it.</span></h1>
     <p>The complete curriculum for mastering AI. 26 chapters covering Claude, ChatGPT, 40+ tools, interactive exercises, quizzes, and a built-in AI assistant. From total beginner to running AI systems 24/7.</p>
     <a href="#pricing" class="btn-primary">Get the Full Curriculum &middot; $50</a>
-    <div class="hero-sub">One-time purchase. 30-day money-back guarantee.</div>
+    <div class="hero-sub">One-time purchase. Yours forever.</div>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="stat-number">26</div>
@@ -924,13 +938,13 @@ footer {
   </div>
 </section>
 
-<!-- WHAT IS CLAUDE CODE -->
-<section id="what-is-it" style="padding:60px 0;background:var(--bg);">
+<!-- WHAT IS THE COURSE -->
+<section id="what-is-it" style="padding:60px 0;">
   <div class="container" style="max-width:800px;text-align:center;">
-    <p style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Wait, what is Claude Code?</p>
-    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2;">Claude Code is AI that lives on your computer and does real work.</h2>
-    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;margin-bottom:16px;">You know ChatGPT and Claude.ai, where you type in a chat box and get text back. Claude Code is different. It runs directly on your machine. It can read your files, write code, build websites, send emails, connect to your calendar, and run tasks in the background while you do other things.</p>
-    <p style="font-size:17px;color:var(--text-secondary);line-height:1.65;">Think of it as going from texting an assistant to having one sit at your desk with full access to your tools. That is the jump. And most people do not know it exists.</p>
+    <p style="font-size:15px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">What is The AI Playbook?</p>
+    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2;">A complete, interactive course that teaches you how to actually use AI.</h2>
+    <p style="font-size:19px;color:var(--text-secondary);line-height:1.65;margin-bottom:16px;">26 chapters covering everything from your first conversation with AI to building automated systems that work while you sleep. Not a PDF. Not a video series. An interactive guide with built-in tools, quizzes, and a personalized learning path based on your role and goals.</p>
+    <p style="font-size:19px;color:var(--text-secondary);line-height:1.65;">You also get access to a private Discord community of other learners once you complete the course. One purchase. Yours forever. Every update included.</p>
   </div>
 </section>
 
@@ -1007,7 +1021,7 @@ footer {
 
     <!-- TRACK 1: UNDERSTANDING AI AND CLAUDE -->
     <div class="curriculum-track">
-      <div class="track-label">Part 1: Understanding AI and Claude</div>
+      <div class="track-label" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Part 1: Understanding AI and Claude <span class="track-time">6 chapters &middot; ~60 min</span><span class="track-arrow">&#9654;</span></div>
       <div class="modules">
         <div class="module">
           <div class="module-number">01</div>
@@ -1102,7 +1116,7 @@ footer {
 
     <!-- TRACK 2: CLAUDE CODE -->
     <div class="curriculum-track">
-      <div class="track-label">Part 2: Entering Claude Code</div>
+      <div class="track-label" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Part 2: Becoming Effective <span class="track-time">5 chapters &middot; ~55 min</span><span class="track-arrow">&#9654;</span></div>
       <div class="modules">
         <div class="module">
           <div class="module-number">12</div>
@@ -1149,7 +1163,7 @@ footer {
 
     <!-- TRACK 3: MAKING CLAUDE CODE POWERFUL -->
     <div class="curriculum-track">
-      <div class="track-label">Part 3: Making Claude Code Powerful</div>
+      <div class="track-label" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Part 3: Claude Code <span class="track-time">5 chapters &middot; ~50 min</span><span class="track-arrow">&#9654;</span></div>
       <div class="modules">
         <div class="module">
           <div class="module-number">17</div>
@@ -1180,7 +1194,7 @@ footer {
 
     <!-- TRACK 4: GOING FURTHER -->
     <div class="curriculum-track">
-      <div class="track-label">Part 4: Going Further</div>
+      <div class="track-label" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">Part 4: Automation and Beyond <span class="track-time">10 chapters &middot; ~90 min</span><span class="track-arrow">&#9654;</span></div>
       <div class="modules">
         <div class="module">
           <div class="module-number">20</div>
@@ -1291,7 +1305,7 @@ footer {
 <section id="who">
   <div class="container">
     <div class="section-label">Who this is for</div>
-    <h2>Built for doers, not developers</h2>
+    <h2>Built for anyone looking to stay ahead. No coding experience needed.</h2>
     <div class="persona-grid">
       <div class="persona">
         <div class="persona-icon">
@@ -1334,7 +1348,7 @@ footer {
         <li><span class="check">&check;</span> All future updates included at no extra cost</li>
       </ul>
       <a href="#" class="btn-primary">Get the Full Curriculum &middot; $50</a>
-      <div class="guarantee">30-day money-back guarantee. No questions asked.</div>
+      <div class="guarantee">One-time purchase. All future updates included.</div>
     </div>
   </div>
 </section>
@@ -1345,8 +1359,8 @@ footer {
     <h2>Questions</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <h3>Do I need to be technical?</h3>
-        <p>No. The guide is written for people with zero coding experience. Every step is explained clearly, with exact commands you can copy and paste. There is an entire chapter on terminal basics for non-developers.</p>
+        <h3>Do I need coding experience?</h3>
+        <p>No. Zero coding experience required. The course is written for complete beginners. Every step is explained clearly with exact commands you can copy and paste. There is an entire chapter on terminal basics.</p>
       </div>
       <div class="faq-item">
         <h3>What if I use ChatGPT, not Claude?</h3>
@@ -1389,9 +1403,9 @@ footer {
         </form>
       </div>
       <div style="background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px;">
-        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Join the Community</h3>
-        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.55; margin-bottom: 20px;">Ask questions, share prompts, meet other learners. Open to everyone. Free.</p>
-        <a href="https://discord.gg/theaiplaybook" target="_blank" style="display: inline-block; padding: 10px 24px; background: #1e4f8a; color: white; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity 0.2s;">Join Discord</a>
+        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Private Discord Community</h3>
+        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.55; margin-bottom: 20px;">Once you finish the course, you get access to a private Discord community of other learners. Ask questions, share prompts, and connect with people building with AI.</p>
+        <span style="display: inline-block; padding: 10px 24px; background: var(--bg-alt); color: var(--text-muted); border-radius: 8px; font-size: 14px; font-weight: 600;">Included with purchase</span>
       </div>
     </div>
 
