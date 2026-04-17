@@ -451,7 +451,11 @@ section {
 .module:last-child { border-bottom: none; }
 .module:hover { background: var(--bg-alt); }
 .module .module-body p { display: none; margin-top: 4px; font-size: 14px; }
+.module .module-subs { display: none; margin: 6px 0 0; padding: 0; list-style: none; }
+.module .module-subs li { font-size: 13px; color: var(--text-muted); padding: 3px 0; }
+.module .sub-count { font-size: 12px; color: var(--text-muted); font-weight: 500; }
 .module.expanded .module-body p { display: block; }
+.module.expanded .module-subs { display: block; }
 
 .module-number {
   font-size: 13px;
@@ -1457,13 +1461,13 @@ document.querySelectorAll('.module').forEach(function(mod){
   var num = mod.querySelector('.module-number').textContent.trim();
   var subs = subChapters[num];
   if (subs && subs.length > 0) {
-    // Add sub count badge
+    // Replace result badge with section count
     var result = mod.querySelector('.module-result');
-    var countBadge = document.createElement('span');
-    countBadge.className = 'sub-count';
-    countBadge.textContent = subs.length + ' sections';
-    countBadge.style.marginRight = '8px';
-    result.parentNode.insertBefore(countBadge, result);
+    if (result) {
+      result.className = 'sub-count';
+      result.textContent = subs.length + ' sections';
+      result.style.cssText = '';
+    }
 
     // Build sub-chapter list
     var ul = document.createElement('ul');
