@@ -437,24 +437,22 @@ section {
   background: var(--bg-white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 24px 28px;
+  padding: 16px 24px;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
   transition: all 0.25s ease;
-  cursor: default;
+  cursor: pointer;
 }
 
 .module:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(41, 105, 187, 0.12);
-  transform: translateY(-2px);
-}
-
-.module:hover {
   box-shadow: var(--shadow-md);
 }
+
+.module .module-body p { display: none; margin-top: 8px; }
+.module.expanded .module-body p { display: block; }
 
 .module-number {
   font-size: 15px;
@@ -1423,6 +1421,13 @@ document.querySelectorAll('.faq-item h3').forEach(function(h3){
     var wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('open'); });
     if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Module click to expand/collapse description
+document.querySelectorAll('.module').forEach(function(mod){
+  mod.addEventListener('click', function(){
+    this.classList.toggle('expanded');
   });
 });
 </script>
