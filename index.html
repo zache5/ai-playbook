@@ -421,15 +421,16 @@ section {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
+  gap: 16px;
   transition: all 0.2s;
   box-shadow: var(--shadow-sm);
 }
 .track-label:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
-.track-label .track-time { font-size: 14px; font-weight: 500; color: var(--text-muted); }
-.track-label .track-arrow { font-size: 14px; color: var(--accent); transition: transform 0.2s; margin-left: 12px; }
+.track-label .track-time { font-size: 14px; font-weight: 500; color: var(--text-muted); white-space: nowrap; text-align: right; }
+.track-label .track-arrow { font-size: 14px; color: var(--accent); transition: transform 0.2s; }
 .track-label.open .track-arrow { transform: rotate(90deg); }
 .track-label.open { border-color: var(--accent); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 .modules { display: none; flex-direction: column; gap: 0; border: 1px solid var(--accent); border-top: none; border-radius: 0 0 var(--radius-lg) var(--radius-lg); overflow: hidden; }
@@ -439,31 +440,27 @@ section {
   background: var(--bg-white);
   border-bottom: 1px solid var(--border-light);
   border-radius: 0;
-  padding: 16px 28px;
+  padding: 10px 20px;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
   transition: background 0.2s;
   cursor: pointer;
 }
 .module:last-child { border-bottom: none; }
-
-.module:hover {
-  background: var(--bg-alt);
-}
-
-.module .module-body p { display: none; margin-top: 8px; }
+.module:hover { background: var(--bg-alt); }
+.module .module-body p { display: none; margin-top: 4px; font-size: 14px; }
 .module.expanded .module-body p { display: block; }
 
 .module-number {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--accent);
   background: var(--accent-light);
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -471,13 +468,13 @@ section {
 }
 
 .module-body h3 {
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 3px;
+  margin-bottom: 0;
 }
 
 .module-body p {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text-muted);
   line-height: 1.5;
 }
@@ -1426,8 +1423,59 @@ document.querySelectorAll('.faq-item h3').forEach(function(h3){
   });
 });
 
-// Module click to expand/collapse description
+// Sub-chapter data for each module
+var subChapters = {
+  '01': ['The five eras in 60 seconds','The milestones that got us here','Where we are now: 2026','What AI cannot do'],
+  '02': ['Claude is not a search engine','The three ways to use Claude','Which plan should you get?'],
+  '03': ['The personalization prompt','Real examples from real lives','Using Projects to save your profile'],
+  '04': ['AI is a tool. Full stop.','When AI use is appropriate','A framework for ethical AI use'],
+  '05': ['What is a model?','Tokens and context windows','Hallucination and how to catch it'],
+  '06': ['What is the same','What is different','The migration checklist'],
+  '07': ['Think step by step','Think harder / Ultrathink','Before answering, list reasons this might fail','What questions should I be asking?'],
+  '08': ['The 3-check method','When Claude is most likely wrong','Red flags in AI output'],
+  '09': ['What Claude cannot do','Context window limits','Rate limits and what to do'],
+  '10': ['Real conversations for real people','Projects: stop repeating yourself','Uploading files'],
+  '11': ['Email drafting','Document analysis','Spreadsheet and data','Research synthesis','Content creation'],
+  '12': ['Why Claude Code changes everything','What it can actually do','CLI vs chat interface'],
+  '13': ['Terminal basics for humans','Installing Claude Code','Your first commands'],
+  '14': ['Your first session','Understanding the workflow','Reading error messages'],
+  '15': ['Planning a real project','Building step by step','Debugging with Claude'],
+  '16': ['Building your first real thing','From idea to working product'],
+  '17': ['What is CLAUDE.md','Writing effective instructions','Project-level vs global'],
+  '18': ['What are MCP servers','Connecting Gmail and Calendar','Building custom connectors'],
+  '19': ['Automating repetitive tasks','Scheduled workflows','Claude Code Routines'],
+  '20': ['Running Claude Code 24/7','Mac Mini setup','Remote access'],
+  '21': ['Claude on your phone','Telegram bot setup','Remote task management'],
+  '22': ['10 power projects','Step-by-step blueprints'],
+  '23': ['40+ AI tools reviewed','Pricing comparison','Which tool for which job'],
+  '24': ['The future of AI','Career strategy','Staying ahead'],
+  '25': ['Security best practices','Privacy settings','What not to share'],
+  '26': ['What you built','Your toolkit summary','Next steps']
+};
+
 document.querySelectorAll('.module').forEach(function(mod){
+  var num = mod.querySelector('.module-number').textContent.trim();
+  var subs = subChapters[num];
+  if (subs && subs.length > 0) {
+    // Add sub count badge
+    var result = mod.querySelector('.module-result');
+    var countBadge = document.createElement('span');
+    countBadge.className = 'sub-count';
+    countBadge.textContent = subs.length + ' sections';
+    countBadge.style.marginRight = '8px';
+    result.parentNode.insertBefore(countBadge, result);
+
+    // Build sub-chapter list
+    var ul = document.createElement('ul');
+    ul.className = 'module-subs';
+    subs.forEach(function(s) {
+      var li = document.createElement('li');
+      li.textContent = s;
+      ul.appendChild(li);
+    });
+    mod.querySelector('.module-body').appendChild(ul);
+  }
+
   mod.addEventListener('click', function(){
     this.classList.toggle('expanded');
   });
