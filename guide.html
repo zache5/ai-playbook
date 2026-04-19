@@ -774,25 +774,16 @@ blockquote {
 .pb-explain strong { color: var(--green-dark); }
 .pb-toggle-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   margin-top: 10px;
-  max-width: 100%;
-  overflow: hidden;
-}
-.pb-toggle-row input[type="checkbox"] {
-  flex-shrink: 0;
-  margin-top: 3px;
 }
 .pb-toggle-row label {
   display: inline;
   font-weight: 500;
   font-size: 0.85em;
-  white-space: normal;
-  word-wrap: break-word;
+  white-space: nowrap;
   margin: 0;
-  flex: 1;
-  min-width: 0;
   color: var(--text-secondary);
   cursor: pointer;
 }
