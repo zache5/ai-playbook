@@ -705,12 +705,12 @@ blockquote {
 /* Prompt Builder */
 .prompt-builder {
   background: var(--bg-alt);
-  border: 2px solid var(--purple);
+  border: 2px solid var(--accent);
   border-radius: 12px;
   padding: 28px;
   margin: 28px 0;
 }
-.prompt-builder h3 { margin-top: 0; color: var(--purple-dark); }
+.prompt-builder h3 { margin-top: 0; color: var(--accent); }
 .prompt-builder label {
   display: block;
   font-weight: 600;
@@ -731,7 +731,7 @@ blockquote {
   outline: none;
 }
 .prompt-builder textarea { min-height: 60px; resize: vertical; }
-.prompt-builder select:focus, .prompt-builder input:focus, .prompt-builder textarea:focus { border-color: var(--purple); }
+.prompt-builder select:focus, .prompt-builder input:focus, .prompt-builder textarea:focus { border-color: var(--accent); }
 .pb-output {
   background: var(--bg-prompt);
   color: #e2e8f0;
@@ -774,16 +774,25 @@ blockquote {
 .pb-explain strong { color: var(--green-dark); }
 .pb-toggle-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   margin-top: 10px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.pb-toggle-row input[type="checkbox"] {
+  flex-shrink: 0;
+  margin-top: 3px;
 }
 .pb-toggle-row label {
   display: inline;
   font-weight: 500;
   font-size: 0.85em;
   white-space: normal;
+  word-wrap: break-word;
   margin: 0;
+  flex: 1;
+  min-width: 0;
   color: var(--text-secondary);
   cursor: pointer;
 }
@@ -5098,7 +5107,7 @@ Everything. A personalized AI profile, a verification framework, eight workflows
 <div id="pb-custom-cat-area" style="display:none;margin-top:8px;">
 <input type="text" id="pb-custom-cat-name" placeholder="Enter your custom category name..." style="width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.9em;background:var(--bg);color:var(--text);outline:none;">
 <div style="display:flex;gap:8px;margin-top:6px;">
-<button onclick="addCustomCategory()" style="padding:6px 14px;background:var(--purple);color:#fff;border:none;border-radius:6px;font-family:inherit;font-size:0.85em;font-weight:600;cursor:pointer;">Add Category</button>
+<button onclick="addCustomCategory()" style="padding:6px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-family:inherit;font-size:0.85em;font-weight:600;cursor:pointer;">Add Category</button>
 <button onclick="document.getElementById('pb-custom-cat-area').style.display='none';document.getElementById('pb-category').value='';" style="padding:6px 14px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text-secondary);font-family:inherit;font-size:0.85em;cursor:pointer;">Cancel</button>
 </div>
 </div>
@@ -5168,7 +5177,7 @@ Everything. A personalized AI profile, a verification framework, eight workflows
 <input type="checkbox" id="pb-errorcheck"> <label for="pb-errorcheck">Check for errors before finalizing</label>
 </div>
 
-<button class="onboarding-btn" style="margin-top:18px;width:100%;background:var(--purple);" onclick="buildPrompt()">Generate Prompt</button>
+<button class="onboarding-btn" style="margin-top:18px;width:100%;background:var(--accent);" onclick="buildPrompt()">Generate Prompt</button>
 
 <div class="pb-output" id="pb-output">
 <button class="pb-copy-btn" onclick="copyPromptBuilder()">Copy</button>
