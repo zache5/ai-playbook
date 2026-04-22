@@ -8708,7 +8708,7 @@ If Claude saves you 2 hours per month (and it likely will), At any hourly rate a
         var threshold = chapterStart + chapterHeight * 0.85;
 
         // Only mark complete if scrolled past 85% AND spent at least 30 seconds reading
-        if (scrollBottom >= threshold && (timeInChapter[ch.id] || 0) >= 30) {
+        if (scrollBottom >= threshold && (timeInChapter[ch.id] || 0) >= 10) {
           completed[ch.id] = true;
           progress[ch.id] = true;
           changed = true;
