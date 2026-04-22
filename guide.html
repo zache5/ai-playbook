@@ -92,7 +92,7 @@ body {
   left: 0;
   width: 0%;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--purple));
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
   z-index: 9999;
   transition: width 0.1s linear;
   pointer-events: none;
@@ -314,10 +314,10 @@ code {
 .callout-note .callout-title { color: var(--accent-dark); }
 
 .callout-example {
-  background: var(--purple-bg);
-  border-left: 4px solid var(--purple);
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
 }
-.callout-example .callout-title { color: var(--purple-dark); }
+.callout-example .callout-title { color: var(--accent); }
 
 .callout-try {
   background: #fefce8;
@@ -872,7 +872,7 @@ body { padding-top: 60px; }
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  background: linear-gradient(135deg, var(--accent-bg), var(--purple-bg));
+  background: linear-gradient(135deg, var(--accent-bg), var(--accent-light));
   border: 2px solid var(--accent);
   border-radius: 12px;
   padding: 20px 24px;
@@ -2308,7 +2308,7 @@ html.dark-mode .text-highlight { background: rgba(255, 235, 59, 0.15); }
 
 /* ===== PERSONALIZED GET AHEAD CHAPTER ===== */
 #get-ahead-personalized {
-  background: linear-gradient(135deg, var(--accent-bg), var(--purple-bg));
+  background: linear-gradient(135deg, var(--accent-bg), var(--accent-light));
   border: 1px solid var(--accent);
   border-radius: 10px;
   padding: 24px;
