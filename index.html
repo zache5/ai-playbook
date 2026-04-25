@@ -1494,5 +1494,55 @@ document.querySelectorAll('.module').forEach(function(mod){
   });
 });
 </script>
+<!-- Exit Intent Email Capture Popup -->
+<div id="exit-popup-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:40px 36px;max-width:460px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <button onclick="document.getElementById('exit-popup-overlay').style.display='none';sessionStorage.setItem('popup-closed','1');" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#999;">&times;</button>
+    <h2 style="font-family:'Inter',-apple-system,sans-serif;font-size:22px;font-weight:800;margin:0 0 8px;color:#09090b;">Before you go...</h2>
+    <p style="font-family:'Inter',-apple-system,sans-serif;font-size:15px;color:#71717a;margin:0 0 20px;line-height:1.5;">Grab our free cheat sheet: <strong style="color:#09090b;">20 AI Prompts That Save 10+ Hours/Week.</strong> Works with Claude, ChatGPT, and any AI tool.</p>
+    <div id="popup-form">
+      <input type="email" id="popup-email" placeholder="you@email.com" style="width:100%;padding:14px 16px;border:1px solid #e4e4e7;border-radius:10px;font-size:16px;font-family:'Inter',-apple-system,sans-serif;margin-bottom:12px;box-sizing:border-box;outline:none;" onfocus="this.style.borderColor='#1e4f8a'" onblur="this.style.borderColor='#e4e4e7'">
+      <button onclick="captureEmail()" style="width:100%;padding:14px;background:#1e4f8a;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;font-family:'Inter',-apple-system,sans-serif;cursor:pointer;">Get the Free Cheat Sheet</button>
+    </div>
+    <div id="popup-success" style="display:none;">
+      <p style="font-size:18px;font-weight:700;color:#1e4f8a;margin:10px 0;">Check your inbox!</p>
+      <a href="/cheatsheet.html" target="_blank" style="display:inline-block;padding:12px 28px;background:#1e4f8a;color:#fff;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;margin-top:8px;">View Cheat Sheet Now</a>
+    </div>
+    <p style="font-size:11px;color:#a1a1aa;margin-top:14px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var shown = false;
+  document.addEventListener('mouseout', function(e) {
+    if (e.clientY < 5 && !shown && !sessionStorage.getItem('popup-closed')) {
+      document.getElementById('exit-popup-overlay').style.display = 'block';
+      shown = true;
+    }
+  });
+  // Also show after 45 seconds on page if not shown yet
+  setTimeout(function() {
+    if (!shown && !sessionStorage.getItem('popup-closed')) {
+      document.getElementById('exit-popup-overlay').style.display = 'block';
+      shown = true;
+    }
+  }, 45000);
+})();
+function captureEmail() {
+  var email = document.getElementById('popup-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('popup-email').style.borderColor = '#ef4444';
+    return;
+  }
+  // Store locally
+  var leads = JSON.parse(localStorage.getItem('ai_playbook_leads') || '[]');
+  leads.push({ email: email, date: new Date().toISOString(), source: 'exit-popup' });
+  localStorage.setItem('ai_playbook_leads', JSON.stringify(leads));
+  // Show success
+  document.getElementById('popup-form').style.display = 'none';
+  document.getElementById('popup-success').style.display = 'block';
+  sessionStorage.setItem('popup-closed', '1');
+}
+</script>
 </body>
 </html>
