@@ -1603,13 +1603,14 @@ function captureMiniEmail() {
 }
 
 function sendToBeehiiv(email) {
-  // Use Beehiiv's embed subscribe endpoint
-  var iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.src = 'https://embeds.beehiiv.com/subscribe?publication_id=pub_db179ee1-2290-40d5-bedc-be1d0d30dab2&email=' + encodeURIComponent(email);
-  document.body.appendChild(iframe);
-  setTimeout(function() { iframe.remove(); }, 5000);
-  // Also store locally as backup
+  fetch('https://api.beehiiv.com/v2/publications/pub_db179ee1-2290-40d5-bedc-be1d0d30dab2/subscriptions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer zqn3YpgXcSLHcX0VOBll3AxWlAqFWi0cVvGWcwqdfWVNQL0Nni1USrYGht5RjIeu',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email: email, reactivate_existing: false, send_welcome_email: false })
+  }).catch(function(){});
   var leads = JSON.parse(localStorage.getItem('ai_playbook_leads') || '[]');
   leads.push({ email: email, date: new Date().toISOString(), source: 'popup' });
   localStorage.setItem('ai_playbook_leads', JSON.stringify(leads));
