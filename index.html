@@ -1603,12 +1603,13 @@ function captureMiniEmail() {
 }
 
 function sendToBeehiiv(email) {
-  fetch('https://playbookss.beehiiv.com/subscribe', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'email=' + encodeURIComponent(email),
-    mode: 'no-cors'
-  }).catch(function(){});
+  // Use Beehiiv's embed subscribe endpoint
+  var iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.src = 'https://embeds.beehiiv.com/subscribe?publication_id=pub_db179ee1-2290-40d5-bedc-be1d0d30dab2&email=' + encodeURIComponent(email);
+  document.body.appendChild(iframe);
+  setTimeout(function() { iframe.remove(); }, 5000);
+  // Also store locally as backup
   var leads = JSON.parse(localStorage.getItem('ai_playbook_leads') || '[]');
   leads.push({ email: email, date: new Date().toISOString(), source: 'popup' });
   localStorage.setItem('ai_playbook_leads', JSON.stringify(leads));
