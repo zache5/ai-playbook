@@ -1603,27 +1603,11 @@ function captureMiniEmail() {
 }
 
 function sendToBeehiiv(email) {
-  // Use hidden form POST to Beehiiv subscribe page (bypasses CORS)
-  var form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://playbookss.beehiiv.com/subscribe';
-  form.target = 'beehiiv-frame';
-  form.style.display = 'none';
-  var input = document.createElement('input');
-  input.name = 'email';
-  input.value = email;
-  form.appendChild(input);
-  var iframe = document.createElement('iframe');
-  iframe.name = 'beehiiv-frame';
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-  document.body.appendChild(form);
-  form.submit();
-  setTimeout(function() { form.remove(); iframe.remove(); }, 10000);
-  // Store locally as backup
-  var leads = JSON.parse(localStorage.getItem('ai_playbook_leads') || '[]');
-  leads.push({ email: email, date: new Date().toISOString(), source: 'popup' });
-  localStorage.setItem('ai_playbook_leads', JSON.stringify(leads));
+  fetch('https://formspree.io/f/xqewjqky', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).catch(function(){});
 }
 </script>
 </body>
