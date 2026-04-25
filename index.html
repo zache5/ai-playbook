@@ -1531,54 +1531,87 @@ document.querySelectorAll('.module').forEach(function(mod){
     <p style="font-size:11px;color:#a1a1aa;margin-top:14px;">No spam. Unsubscribe anytime.</p>
   </div>
 </div>
+<!-- Mini sticky widget (bottom right) -->
+<div id="mini-email-widget" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9998;background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 4px 24px rgba(0,0,0,0.15);max-width:300px;width:90%;border:1px solid #e4e4e7;">
+  <button onclick="document.getElementById('mini-email-widget').style.display='none';sessionStorage.setItem('widget-closed','1');" style="position:absolute;top:8px;right:10px;background:none;border:none;font-size:18px;cursor:pointer;color:#999;line-height:1;">&times;</button>
+  <p style="font-family:'Inter',-apple-system,sans-serif;font-size:13px;font-weight:700;margin:0 0 4px;color:#09090b;">Free AI Cheat Sheet</p>
+  <p style="font-family:'Inter',-apple-system,sans-serif;font-size:11px;color:#71717a;margin:0 0 10px;line-height:1.4;">20 prompts that save 10+ hours/week.</p>
+  <div id="mini-form" style="display:flex;gap:6px;">
+    <input type="email" id="mini-email" placeholder="you@email.com" style="flex:1;padding:8px 10px;border:1px solid #e4e4e7;border-radius:8px;font-size:13px;font-family:'Inter',-apple-system,sans-serif;outline:none;min-width:0;" onfocus="this.style.borderColor='#1e4f8a'" onblur="this.style.borderColor='#e4e4e7'">
+    <button onclick="captureMiniEmail()" style="padding:8px 14px;background:#1e4f8a;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;font-family:'Inter',-apple-system,sans-serif;cursor:pointer;white-space:nowrap;">Get It</button>
+  </div>
+  <div id="mini-success" style="display:none;">
+    <p style="font-size:13px;font-weight:600;color:#1e4f8a;margin:0;">Sent! <a href="/cheatsheet.html" target="_blank" style="color:#1e4f8a;text-decoration:underline;">View now</a></p>
+  </div>
+</div>
+
 <script>
 (function(){
   var shown = false;
-  document.addEventListener('mouseout', function(e) {
-    if (e.clientY < 5 && !shown && !sessionStorage.getItem('popup-closed')) {
-      document.getElementById('exit-popup-overlay').style.display = 'block';
-      shown = true;
-    }
-  });
-  // Mobile: show when user scrolls 60% of page then scrolls back up
-  var maxScroll = 0;
-  window.addEventListener('scroll', function() {
-    var scrollPct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-    if (scrollPct > maxScroll) maxScroll = scrollPct;
-    if (maxScroll > 0.6 && scrollPct < maxScroll - 0.15 && !shown && !sessionStorage.getItem('popup-closed')) {
-      document.getElementById('exit-popup-overlay').style.display = 'block';
-      shown = true;
-    }
-  }, { passive: true });
-  // Fallback: show after 30 seconds on page if not shown yet
-  setTimeout(function() {
+  function showMainPopup() {
     if (!shown && !sessionStorage.getItem('popup-closed')) {
       document.getElementById('exit-popup-overlay').style.display = 'block';
       shown = true;
     }
-  }, 30000);
+  }
+  function closeMainAndShowMini() {
+    document.getElementById('exit-popup-overlay').style.display = 'none';
+    sessionStorage.setItem('popup-closed', '1');
+    if (!sessionStorage.getItem('widget-closed') && !sessionStorage.getItem('email-captured')) {
+      document.getElementById('mini-email-widget').style.display = 'block';
+    }
+  }
+  // Override the X button on main popup to also show mini widget
+  document.querySelector('#exit-popup-overlay button').onclick = closeMainAndShowMini;
+
+  document.addEventListener('mouseout', function(e) {
+    if (e.clientY < 5) showMainPopup();
+  });
+  var maxScroll = 0;
+  window.addEventListener('scroll', function() {
+    var scrollPct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+    if (scrollPct > maxScroll) maxScroll = scrollPct;
+    if (maxScroll > 0.6 && scrollPct < maxScroll - 0.15) showMainPopup();
+  }, { passive: true });
+  setTimeout(function() { showMainPopup(); }, 30000);
 })();
+
 function captureEmail() {
   var email = document.getElementById('popup-email').value.trim();
   if (!email || !email.includes('@')) {
     document.getElementById('popup-email').style.borderColor = '#ef4444';
     return;
   }
-  // Send to Beehiiv
+  sendToBeehiiv(email);
+  document.getElementById('popup-form').style.display = 'none';
+  document.getElementById('popup-success').style.display = 'block';
+  sessionStorage.setItem('popup-closed', '1');
+  sessionStorage.setItem('email-captured', '1');
+}
+
+function captureMiniEmail() {
+  var email = document.getElementById('mini-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('mini-email').style.borderColor = '#ef4444';
+    return;
+  }
+  sendToBeehiiv(email);
+  document.getElementById('mini-form').style.display = 'none';
+  document.getElementById('mini-success').style.display = 'block';
+  sessionStorage.setItem('email-captured', '1');
+  setTimeout(function() { document.getElementById('mini-email-widget').style.display = 'none'; }, 5000);
+}
+
+function sendToBeehiiv(email) {
   fetch('https://playbookss.beehiiv.com/subscribe', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'email=' + encodeURIComponent(email),
     mode: 'no-cors'
   }).catch(function(){});
-  // Also store locally as backup
   var leads = JSON.parse(localStorage.getItem('ai_playbook_leads') || '[]');
-  leads.push({ email: email, date: new Date().toISOString(), source: 'exit-popup' });
+  leads.push({ email: email, date: new Date().toISOString(), source: 'popup' });
   localStorage.setItem('ai_playbook_leads', JSON.stringify(leads));
-  // Show success
-  document.getElementById('popup-form').style.display = 'none';
-  document.getElementById('popup-success').style.display = 'block';
-  sessionStorage.setItem('popup-closed', '1');
 }
 </script>
 </body>
