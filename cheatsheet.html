@@ -103,7 +103,25 @@ body {
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 12px;
+  position: relative;
 }
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #1e4f8a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.copy-btn:hover { background: #163d6e; }
+.copy-btn.copied { background: #15803d; }
 .prompt-card .label {
   font-size: 12px;
   font-weight: 700;
@@ -190,24 +208,28 @@ body {
     <div class="category-title">Writing & Communication</div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">1. Email Rewriter</div>
       <div class="prompt-text">Rewrite this email to be [more concise / more professional / friendlier]. Keep the core message but adjust the tone. Here's the email: [paste email]</div>
       <div class="use-case">Saves 10-15 min per email. Works for any professional communication.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">2. Meeting Notes to Action Items</div>
       <div class="prompt-text">Here are my meeting notes. Extract every action item, who is responsible, and the deadline if mentioned. Format as a numbered checklist. Notes: [paste notes]</div>
       <div class="use-case">Turns messy notes into clear next steps in seconds.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">3. First Draft Generator</div>
       <div class="prompt-text">Write a first draft of a [blog post / report / proposal] about [topic]. Audience: [who]. Goal: [what you want the reader to do after reading]. Tone: [professional / casual / persuasive]. Length: roughly [X] words.</div>
       <div class="use-case">Gets you 80% of the way there. Edit instead of writing from scratch.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">4. Difficult Message Helper</div>
       <div class="prompt-text">Help me write a message to [person/role] about [difficult situation]. I want to be [direct but respectful / empathetic / firm]. Key points I need to make: [list them]. What I want to avoid: [list concerns].</div>
       <div class="use-case">Hard conversations, feedback, negotiations, complaints.</div>
@@ -219,24 +241,28 @@ body {
     <div class="category-title">Research & Analysis</div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">5. Quick Research Brief</div>
       <div class="prompt-text">Give me a research brief on [topic]. Include: key facts, recent developments, main arguments for and against, and 3 things most people get wrong about this topic. Write it for someone who needs to sound informed in a meeting tomorrow.</div>
       <div class="use-case">Meeting prep, presentations, catching up on unfamiliar topics.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">6. Compare Options</div>
       <div class="prompt-text">Compare [Option A] vs [Option B] for [my specific situation]. Create a table with these criteria: [list criteria]. Then give me your recommendation and explain why, considering that [your priorities/constraints].</div>
       <div class="use-case">Software decisions, vendor selection, strategy choices.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">7. Data Interpreter</div>
       <div class="prompt-text">Here is some data: [paste data/numbers]. Summarize the key trends, flag anything unusual, and explain what this means in plain English. What questions should I be asking based on this data?</div>
       <div class="use-case">Making sense of spreadsheets, reports, metrics.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">8. Document Summarizer</div>
       <div class="prompt-text">Summarize this document in 3 levels: (1) One sentence. (2) One paragraph. (3) Bullet points covering every key point. Here's the document: [paste text]</div>
       <div class="use-case">Long reports, legal docs, articles. Get the gist fast.</div>
@@ -248,24 +274,28 @@ body {
     <div class="category-title">Productivity & Planning</div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">9. Weekly Planner</div>
       <div class="prompt-text">Here are all the things I need to get done this week: [list everything]. Prioritize them by impact and urgency. Create a day-by-day schedule that groups similar tasks together. I have [X hours] available per day for focused work.</div>
       <div class="use-case">Turn a chaotic to-do list into a structured week.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">10. Process Builder</div>
       <div class="prompt-text">I do [task] regularly and it takes me [time]. Break it down into a step-by-step checklist that anyone could follow. Identify which steps could be automated or eliminated. Format as a numbered process.</div>
       <div class="use-case">SOPs, delegation, workflow optimization.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">11. Decision Framework</div>
       <div class="prompt-text">I need to decide between [options]. My priorities are [list them in order]. My constraints are [budget/time/resources]. What would you recommend and why? What am I not considering? What is the worst case for each option?</div>
       <div class="use-case">Big decisions where you're stuck going back and forth.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">12. Agenda Builder</div>
       <div class="prompt-text">Create a meeting agenda for a [X-minute] meeting about [topic]. Attendees: [who]. Goals: [what we need to decide/align on]. Include time allocations for each section and specific questions to answer during each block.</div>
       <div class="use-case">Makes every meeting actually productive.</div>
@@ -277,24 +307,28 @@ body {
     <div class="category-title">Learning & Problem Solving</div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">13. Explain Like I'm New</div>
       <div class="prompt-text">Explain [complex topic] to someone who understands [related thing they know] but has never encountered [new concept]. Use analogies from [their field/experience]. Avoid jargon. If you must use a technical term, define it inline.</div>
       <div class="use-case">Learning new skills, explaining things to colleagues.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">14. Debug My Thinking</div>
       <div class="prompt-text">Here is my plan for [project/decision]: [describe it]. Play devil's advocate. What are the 5 biggest risks or blind spots? For each one, suggest a specific way to mitigate it. Be direct, not polite.</div>
       <div class="use-case">Stress-testing ideas before committing resources.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">15. Skill Gap Analyzer</div>
       <div class="prompt-text">I currently know [list your skills/experience]. I want to be able to [goal]. What are the specific skills I am missing? Put them in order of what to learn first. For each skill, suggest one practical project I could do to build it.</div>
       <div class="use-case">Career development, learning roadmaps.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">16. Feedback Reframer</div>
       <div class="prompt-text">I received this feedback: [paste feedback]. Help me understand what they are really saying. What specific behavior should I change? Give me 2-3 concrete actions I can take this week to address it.</div>
       <div class="use-case">Performance reviews, client feedback, criticism.</div>
@@ -306,24 +340,28 @@ body {
     <div class="category-title">Building & Creating</div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">17. Landing Page Copy</div>
       <div class="prompt-text">Write landing page copy for [product/service]. Target customer: [who they are and their biggest pain point]. Key benefit: [what it does for them]. Include: headline, subheadline, 3 bullet points, and a call-to-action. Tone: [specify].</div>
       <div class="use-case">Website copy, product pages, ads.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">18. Social Media Batch</div>
       <div class="prompt-text">Create 5 social media posts about [topic/product] for [platform]. Each post should use a different angle: (1) educational, (2) personal story, (3) controversial take, (4) how-to, (5) social proof. Keep each under [character limit]. Include a hook in the first line.</div>
       <div class="use-case">A week of content in 2 minutes.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">19. Code Helper</div>
       <div class="prompt-text">I want to build [describe what you want]. I am using [language/tools/platform]. Write the code and explain what each section does. If there are multiple ways to do this, pick the simplest one that works.</div>
       <div class="use-case">Automate spreadsheets, build tools, fix code. No experience needed.</div>
     </div>
 
     <div class="prompt-card">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
       <div class="label">20. Product Idea Validator</div>
       <div class="prompt-text">I have a product idea: [describe it]. Target market: [who]. Price point: [how much]. Validate this idea: Who are the existing competitors? What would make someone choose this over alternatives? What is the single biggest reason this could fail? Be honest.</div>
       <div class="use-case">Before you spend weeks building something nobody wants.</div>
@@ -343,5 +381,20 @@ body {
   </div>
 </div>
 
+
+<script>
+function copyPrompt(btn) {
+  var card = btn.parentElement;
+  var text = card.querySelector('.prompt-text').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
 </body>
 </html>
