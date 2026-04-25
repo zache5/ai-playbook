@@ -1564,7 +1564,14 @@ function captureEmail() {
     document.getElementById('popup-email').style.borderColor = '#ef4444';
     return;
   }
-  // Store locally
+  // Send to Beehiiv
+  fetch('https://playbookss.beehiiv.com/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'email=' + encodeURIComponent(email),
+    mode: 'no-cors'
+  }).catch(function(){});
+  // Also store locally as backup
   var leads = JSON.parse(localStorage.getItem('ai_playbook_leads') || '[]');
   leads.push({ email: email, date: new Date().toISOString(), source: 'exit-popup' });
   localStorage.setItem('ai_playbook_leads', JSON.stringify(leads));
