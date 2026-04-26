@@ -2895,6 +2895,11 @@ This guide is for educational purposes only. Results vary based on individual ef
 <h2 style="border-bottom: 3px solid #2563eb; font-size: 16pt; color: var(--accent); margin-top: 0;">Part 1: Understanding AI and Claude</h2>
 <p><em>Everything in this section uses claude.ai in your web browser. No downloads, no terminal, no code. If you never go beyond these chapters, you can still save significant time every week.</em></p>
 
+<div class="callout callout-note">
+<div class="callout-title">A note on tools</div>
+This guide uses Claude as the primary tool for examples and walkthroughs because it is what we believe offers the most capability for the broadest range of use cases. But the principles, prompting strategies, and workflows taught here apply to any AI tool: ChatGPT, Gemini, Copilot, or whatever comes next. When something is specific to Claude, we say so. Everything else is universal.
+</div>
+
 <div class="page-break"></div>
 
 <hr class="chapter-sep">
@@ -3057,6 +3062,8 @@ A clear mental timeline of how AI evolved from simple rules to the tools you are
 </ul>
 
 <p><strong>3. Claude API</strong> is for software developers building Claude into their own apps. If you are not a developer, skip this entirely.</p>
+
+<p><strong>4. Claude desktop and mobile apps.</strong> Claude is also available as a desktop app (Mac and Windows) and a mobile app. These give you the same chat experience as claude.ai but with native features like system-wide keyboard shortcuts and offline access to your conversation history. The desktop app also supports Claude Code integration directly.</p>
 
 <h3>Which plan should you get?</h3>
 
@@ -3226,6 +3233,12 @@ Most of my students are on free and reduced lunch. Materials need to be cultural
 <li><strong>Side Hustle</strong> with your business voice and product info</li>
 <li><strong>Learning</strong> with your education goals and current level</li>
 </ul>
+
+<h3>Claude's built-in personalization settings</h3>
+
+<p>Claude also has a Personalize section in its settings (click your profile icon in claude.ai, then Settings, then Personalize). You can add basic preferences there like your name, communication style, and what you do. Claude will remember these across all conversations automatically.</p>
+
+<p>This is simpler than Projects but less powerful. The built-in settings apply to every conversation the same way. Projects let you have different contexts for different parts of your life. Use both: put your general preferences in Settings, and put specific context in Projects.</p>
 
 <h3>Updating your profile as life changes</h3>
 
@@ -6868,7 +6881,7 @@ If Claude saves you 2 hours per month (and it likely will), At any hourly rate a
     toast.innerHTML = '<div class="toast-title">' + title + '</div>' + msg;
     container.appendChild(toast);
     requestAnimationFrame(function() { requestAnimationFrame(function() { toast.classList.add('visible'); }); });
-    setTimeout(function() { toast.classList.remove('visible'); setTimeout(function() { toast.remove(); }, 400); }, 5000);
+    setTimeout(function() { toast.classList.remove('visible'); setTimeout(function() { toast.remove(); }, 400); }, 10000);
   }
 
   // ==================== KEYBOARD SHORTCUTS ====================
