@@ -284,13 +284,13 @@ section {
 
 /* POWER SECTION */
 #power {
-  background: var(--bg-alt);
-  color: var(--text);
+  background: var(--text);
+  color: #fff;
   padding: 80px 0;
 }
 
 #power .section-label {
-  color: var(--accent);
+  color: #4a80b0;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -304,11 +304,10 @@ section {
   letter-spacing: -0.02em;
   margin-bottom: 12px;
   line-height: 1.15;
-  color: var(--text);
 }
 
 #power .section-sub {
-  color: var(--text-secondary);
+  color: #a1a1aa;
   font-size: 19px;
   max-width: 500px;
   margin-bottom: 48px;
@@ -321,21 +320,21 @@ section {
 }
 
 .power-card {
-  background: var(--bg-white);
-  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius);
   padding: 28px 24px;
-  transition: box-shadow 0.2s;
+  transition: background 0.2s;
 }
 
 .power-card:hover {
-  box-shadow: var(--shadow-md);
+  background: rgba(255,255,255,0.1);
 }
 
 .power-icon {
   width: 40px;
   height: 40px;
-  background: var(--accent-light);
+  background: rgba(91, 155, 213, 0.15);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -348,12 +347,12 @@ section {
   font-size: 19px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: var(--text);
+  color: #fff;
 }
 
 .power-card p {
   font-size: 16px;
-  color: var(--text-secondary);
+  color: #a1a1aa;
   line-height: 1.55;
 }
 
@@ -1069,57 +1068,6 @@ footer {
 </section>
 
 <!-- POWER -->
-<section id="power">
-  <div class="container">
-    <div class="section-label">What AI Can Do For You</div>
-    <h2>Claude Code does not just answer questions.<br>It builds things.</h2>
-    <p class="section-sub">While everyone else is copying and pasting from chatbots, Claude Code connects to your computer and actually does the work.</p>
-    <div class="power-grid">
-      <div class="power-card">
-        <div class="power-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a80b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <h3>Build entire applications</h3>
-        <p>Full web apps, dashboards, tools. Planned, coded, and deployed. Not snippets. Working software.</p>
-      </div>
-      <div class="power-card">
-        <div class="power-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a80b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <h3>Run 24/7 on a server</h3>
-        <p>Set it up on a Mac Mini or spare computer. It works while you sleep, handling tasks on autopilot.</p>
-      </div>
-      <div class="power-card">
-        <div class="power-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a80b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <h3>Connect to your everyday tools</h3>
-        <p>Gmail, Calendar, Slack, spreadsheets. Claude plugs into the tools you already use and works across all of them.</p>
-      </div>
-      <div class="power-card">
-        <div class="power-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a80b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </div>
-        <h3>Automate research and reporting</h3>
-        <p>Competitor analysis, market research, daily briefings. Set the system once. Get results every day.</p>
-      </div>
-      <div class="power-card">
-        <div class="power-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a80b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <h3>Control it from your phone</h3>
-        <p>Start tasks, check progress, get notifications. Your AI assistant runs in the background and reports back to you.</p>
-      </div>
-      <div class="power-card">
-        <div class="power-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a80b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3>Automate multi-step tasks</h3>
-        <p>Set up a task once and it runs on its own. Daily reports, weekly summaries, competitor monitoring. You define it, Claude handles it.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- GAP -->
 <section id="gap">
