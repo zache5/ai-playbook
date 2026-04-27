@@ -1070,68 +1070,63 @@ document.addEventListener('DOMContentLoaded', () => { showPersona(0); });
 <!-- FREE PREVIEW -->
 <section id="free-preview" style="padding:60px 0;">
   <div class="container" style="max-width:780px;">
-    <p style="font-size:15px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;text-align:center;">Try Before You Buy</p>
-    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;text-align:center;">Read Chapter 1 free. Right now.</h2>
-    <p style="font-size:17px;color:var(--text-secondary);text-align:center;margin-bottom:32px;">No email required. No signup. Just read it and see if the quality speaks for itself.</p>
+    <p style="font-size:15px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;text-align:center;">Sneak Peek</p>
+    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;text-align:center;">See what's inside. Pick any chapter.</h2>
+    <p style="font-size:17px;color:var(--text-secondary);text-align:center;margin-bottom:32px;">No email. No signup. Just a taste of what you're getting.</p>
 
-    <div id="preview-collapsed" style="position:relative;max-height:400px;overflow:hidden;border:1px solid var(--border);border-radius:12px;padding:32px;background:var(--bg-white);cursor:pointer;" onclick="document.getElementById('preview-collapsed').style.display='none';document.getElementById('preview-expanded').style.display='block';">
-      <h3 style="font-size:22px;font-weight:800;margin-bottom:16px;color:var(--text);">Chapter 1: How AI Got Here</h3>
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">You do not need a computer science degree to understand where AI came from. But knowing the basics gives you a massive advantage: you will understand why these tools work the way they do, why they fail the way they do, and why right now is the single best time in history to learn this.</p>
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">If you have never used AI before, welcome. This chapter is your starting point. If you have been using ChatGPT or Claude for a while, you will still find useful context here about what is happening across the industry and where things are heading.</p>
-      <h4 style="font-size:18px;font-weight:700;margin:20px 0 12px;color:var(--text);">The five eras in 60 seconds</h4>
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);"><strong>Era 1: Rule-Based Systems (1950s-1980s).</strong> Early AI was just if/then rules written by humans. These systems were brittle. They could only handle situations someone had explicitly programmed...</p>
-      <div style="position:absolute;bottom:0;left:0;right:0;height:150px;background:linear-gradient(transparent,var(--bg-white));display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;">
-        <button style="padding:12px 32px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;">Read Full Chapter</button>
+    <!-- Chapter tabs -->
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;justify-content:center;">
+      <button onclick="showChapterPreview(0)" id="ch-tab-0" class="ch-tab" style="padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">Ch 5: Prompting</button>
+      <button onclick="showChapterPreview(1)" id="ch-tab-1" class="ch-tab" style="padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg-white);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">Ch 9: Career</button>
+      <button onclick="showChapterPreview(2)" id="ch-tab-2" class="ch-tab" style="padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg-white);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">Ch 14: Automation</button>
+      <button onclick="showChapterPreview(3)" id="ch-tab-3" class="ch-tab" style="padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg-white);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">Ch 20: Building</button>
+    </div>
+
+    <div id="chapter-preview" style="position:relative;max-height:350px;overflow:hidden;border:1px solid var(--border);border-radius:12px;padding:32px;background:var(--bg-white);">
+      <div id="chapter-preview-content"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--bg-white));display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;">
+        <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" style="padding:12px 32px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;text-decoration:none;display:inline-block;">Unlock All 26 Chapters</a>
       </div>
     </div>
 
-    <div id="preview-expanded" style="display:none;border:1px solid var(--border);border-radius:12px;padding:32px;background:var(--bg-white);">
-      <h3 style="font-size:22px;font-weight:800;margin-bottom:16px;color:var(--text);">Chapter 1: How AI Got Here</h3>
+    <script>
+    const chapterPreviews = [
+      {
+        title: 'Chapter 5: The Art of Prompting',
+        content: '<p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">This is where everything changes. The difference between someone who thinks AI is useless and someone who uses it to save 10 hours a week comes down to one skill: how you ask.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">A bad prompt gives you a bad answer. A great prompt gives you something you would have paid someone hundreds of dollars to create. Same AI. Same tool. The only variable is you.</p><h4 style="font-size:18px;font-weight:700;margin:20px 0 12px;color:var(--text);">The 5 components of a perfect prompt</h4><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>1. Role.</strong> Tell AI who it is. "You are a senior financial advisor" produces completely different output than asking the same question with no role. This single technique transforms every response.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>2. Context.</strong> Give it your situation. The more specific you are, the more specific the answer. "I make $65K, live in Austin, have $12K in student loans" beats "help me with money" every time.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>3. Task.</strong> Be explicit about what you want. Not "help me" but "create a table comparing these 4 options across price, features, and reviews."</p>'
+      },
+      {
+        title: 'Chapter 9: AI for Your Career',
+        content: '<p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">Most people use AI to fix grammar in their resume. That is the lowest possible use of the most powerful career tool ever built.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">In this chapter you will learn how to use AI to reverse-engineer any job posting, identify exactly what the hiring manager is looking for, rewrite every line of your resume to match, generate a cover letter that sounds human, and prepare for the interview by having AI simulate the actual interviewer.</p><h4 style="font-size:18px;font-weight:700;margin:20px 0 12px;color:var(--text);">The salary negotiation framework</h4><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">Step 1: Feed AI your job title, location, years of experience, and company size. It pulls current salary benchmarks and shows you exactly where you fall.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">Step 2: List everything you have done in the past 12 months. AI organizes it into a data-backed promotion case with metrics your manager cannot argue with.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">Step 3: AI generates the email requesting the meeting, the talking points for the conversation, pre-written responses to every objection, and a Plan B if the answer is no.</p>'
+      },
+      {
+        title: 'Chapter 14: Automating Your Life',
+        content: '<p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">You are doing the same 20 tasks every week. Writing the same types of emails. Formatting the same reports. Googling the same questions. This chapter shows you how to make AI do all of it for you, automatically, on a schedule.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">This is not theoretical. By the end of this chapter you will have at least 3 automations running that save you real hours every single week.</p><h4 style="font-size:18px;font-weight:700;margin:20px 0 12px;color:var(--text);">The inbox automation</h4><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">Every morning before you wake up, AI reads your new emails, categorizes them by urgency, drafts responses for the routine ones, and creates a 3-line summary of everything you need to act on. You open your inbox to replies already written. You just review and send.</p><h4 style="font-size:18px;font-weight:700;margin:20px 0 12px;color:var(--text);">The weekly meal system</h4><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">Every Sunday, AI generates a full meal plan based on your dietary preferences, budget, and what is on sale at your local grocery store. It builds the shopping list organized by aisle. It calculates prep time so everything fits into a 2-hour Sunday batch cook.</p>'
+      },
+      {
+        title: 'Chapter 20: Building Real Things',
+        content: '<p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">This is the chapter that changes what you think is possible. You do not need to know how to code. You do not need a technical background. You just need to describe what you want, and AI builds it.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">We are talking about real, working tools. Websites. Calculators. Dashboards. Trackers. Apps. Things you would have paid a developer thousands of dollars to build. You will build your first one in this chapter.</p><h4 style="font-size:18px;font-weight:700;margin:20px 0 12px;color:var(--text);">What people have built with zero coding experience</h4><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">A personal finance dashboard that pulls in their spending and shows trends. A client proposal generator for their freelance business. A workout tracker that adjusts based on their progress. A landing page for a side hustle that started making money the same week.</p><p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;">None of these people had ever written a line of code. They described what they wanted in plain English. AI built it. They launched it.</p>'
+      }
+    ];
 
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">You do not need a computer science degree to understand where AI came from. But knowing the basics gives you a massive advantage: you will understand why these tools work the way they do, why they fail the way they do, and why right now is the single best time in history to learn this.</p>
+    function showChapterPreview(idx) {
+      document.querySelectorAll('.ch-tab').forEach((t, i) => {
+        t.style.background = i === idx ? 'var(--accent)' : 'var(--bg-white)';
+        t.style.color = i === idx ? '#fff' : 'var(--text)';
+        t.style.borderColor = i === idx ? 'var(--accent)' : 'var(--border)';
+      });
+      const c = chapterPreviews[idx];
+      const el = document.getElementById('chapter-preview-content');
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.innerHTML = '<h3 style="font-size:22px;font-weight:800;margin-bottom:16px;color:var(--text);">' + c.title + '</h3>' + c.content;
+        el.style.transition = 'opacity 0.3s';
+        el.style.opacity = '1';
+      }, 150);
+    }
+    document.addEventListener('DOMContentLoaded', () => { showChapterPreview(0); });
+    </script>
 
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;">If you have never used AI before, welcome. This chapter is your starting point. If you have been using ChatGPT or Claude for a while, you will still find useful context here about what is happening across the industry and where things are heading. Either way, this chapter gives you the foundation that makes everything else in the guide click.</p>
-
-      <h4 style="font-size:18px;font-weight:700;margin:24px 0 12px;color:var(--text);">The five eras in 60 seconds</h4>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>Era 1: Rule-Based Systems (1950s-1980s).</strong> Early AI was just if/then rules written by humans. "If the customer says X, respond with Y." These systems were brittle. They could only handle situations someone had explicitly programmed.</p>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>Era 2: Machine Learning (1990s-2000s).</strong> Instead of writing rules, engineers started feeding data to algorithms and letting them find patterns. Spam filters are a classic example: the system learned what spam looks like by seeing millions of emails.</p>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>Era 3: Deep Learning (2010s).</strong> Neural networks with many layers started beating humans at image recognition, language translation, and game playing. Google Translate got noticeably better. Siri and Alexa became possible.</p>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>Era 4: Transformers (2017-2022).</strong> In 2017, Google researchers published "Attention Is All You Need." It introduced the transformer architecture, the foundation of every major AI tool you use today.</p>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:14px;"><strong>Era 5: Large Language Models (2022-present).</strong> Transformers scaled up to billions of parameters, trained on enormous amounts of text. The result: AI that can write, reason, code, analyze, and converse. This is where Claude, ChatGPT, and Gemini live.</p>
-
-      <h4 style="font-size:18px;font-weight:700;margin:24px 0 12px;color:var(--text);">Where we are now: what AI can actually do in 2026</h4>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>Text and writing.</strong> AI can write emails, essays, reports, marketing copy, creative fiction, code documentation, social media posts, business plans, and virtually any form of written content. It can match your voice and style if you give it examples.</p>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>Code and software.</strong> AI can write code in nearly every programming language. It can build websites, create applications, write scripts, debug errors, and explain what code does in plain English. You do not need to know how to code.</p>
-
-      <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:10px;"><strong>Reasoning and analysis.</strong> Modern AI models can solve complex math problems, analyze data sets, evaluate arguments, plan multi-step projects, and reason through difficult questions. They can pass professional exams including the bar exam and medical licensing exams.</p>
-
-      <h4 style="font-size:18px;font-weight:700;margin:24px 0 12px;color:var(--text);">What AI cannot do (honest version)</h4>
-
-      <ul style="font-size:16px;line-height:1.8;color:var(--text-secondary);margin-bottom:20px;padding-left:20px;">
-        <li><strong>It cannot guarantee accuracy.</strong> AI can and will confidently state things that are wrong. Always verify important claims.</li>
-        <li><strong>It cannot replace human judgment.</strong> AI gives you information and options. The decision is still yours.</li>
-        <li><strong>It cannot access your accounts</strong> unless you specifically connect it.</li>
-        <li><strong>It cannot do physical tasks.</strong> It operates in the digital world only.</li>
-      </ul>
-
-      <div style="background:var(--accent-light);border-radius:10px;padding:20px 24px;margin:24px 0;">
-        <p style="font-size:15px;color:var(--accent);font-weight:700;margin:0 0 6px;">Key takeaway</p>
-        <p style="font-size:15px;color:var(--text-secondary);margin:0;line-height:1.6;">AI did not appear out of nowhere. It is the result of 70 years of research that accelerated dramatically in the last four years. You are learning at the right time: early enough to get ahead, late enough that the tools actually work.</p>
-      </div>
-
-      <div style="text-align:center;margin-top:32px;padding:28px;background:linear-gradient(135deg, var(--accent-bg), var(--accent-light));border-radius:12px;">
-        <p style="font-size:18px;font-weight:700;color:var(--text);margin:0 0 8px;">That was 1 of 26 chapters.</p>
-        <p style="font-size:15px;color:var(--text-secondary);margin:0 0 20px;">The full guide goes deeper: personalization, prompt engineering, Claude Code, automation, and 5 interactive tools built right in.</p>
-        <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" class="btn-primary" style="display:inline-block;">Get All 26 Chapters &middot; $50</a>
-      </div>
-    </div>
   </div>
 </section>
 
