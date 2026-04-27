@@ -932,6 +932,14 @@ footer {
   nav { top: 48px !important; }
   .hero { margin-top: 48px; }
   @media (max-width: 600px) { #urgency-banner { font-size: 12px; padding: 8px 16px; } }
+  @media (max-width: 600px) {
+    .level-grid-2 { grid-template-columns: 1fr !important; }
+    .level-grid-3 { grid-template-columns: 1fr 1fr !important; }
+    #ai-levels h2 { font-size: 24px !important; }
+    #ai-levels { padding: 60px 0 !important; }
+    .level-content { padding-left: 36px !important; }
+    .level-dot { left: -34px !important; }
+  }
 </style>
 
 <!-- HERO -->
@@ -1076,13 +1084,13 @@ footer {
     <h2 style="font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.15;text-align:center;">Most people are stuck at Level 1. The Playbook takes you to Level 5.</h2>
     <p style="font-size:17px;color:#a1a1aa;text-align:center;margin-bottom:48px;">Each level unlocks things you didn't know AI could do.</p>
 
-    <div style="position:relative;padding-left:48px;">
+    <div class="level-content" style="position:relative;padding-left:48px;">
       <!-- Vertical line -->
       <div style="position:absolute;left:18px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#a1a1aa,#4a80b0,#16a34a);border-radius:2px;"></div>
 
       <!-- Level 1 -->
       <div style="position:relative;margin-bottom:40px;opacity:0.5;">
-        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;background:#27272a;border:2px solid #a1a1aa;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#a1a1aa;">1</div>
+        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;box-sizing:border-box;background:#27272a;border:2px solid #a1a1aa;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#a1a1aa;">1</div>
         <div style="font-size:13px;font-weight:700;color:#a1a1aa;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Where most people stop</div>
         <div style="font-size:17px;font-weight:700;color:#d4d4d8;margin-bottom:8px;">"Write me an email." "Explain this to me." "Give me ideas."</div>
         <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px;font-size:13px;color:#71717a;font-style:italic;">Generic questions. Generic answers. "AI is overhyped."</div>
@@ -1090,7 +1098,7 @@ footer {
 
       <!-- Level 2 -->
       <div style="position:relative;margin-bottom:40px;opacity:0.6;">
-        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;background:#27272a;border:2px solid #a1a1aa;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#a1a1aa;">2</div>
+        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;box-sizing:border-box;background:#27272a;border:2px solid #a1a1aa;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#a1a1aa;">2</div>
         <div style="font-size:13px;font-weight:700;color:#a1a1aa;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Surface level</div>
         <div style="font-size:17px;font-weight:700;color:#d4d4d8;margin-bottom:8px;">Summarize this article. Help me brainstorm. Rewrite this paragraph.</div>
         <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px;font-size:13px;color:#71717a;font-style:italic;">Helpful, but nothing you couldn't do yourself with more time.</div>
@@ -1098,10 +1106,10 @@ footer {
 
       <!-- Level 3 -->
       <div style="position:relative;margin-bottom:40px;">
-        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;background:#1e3a5f;border:2px solid #4a80b0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#4a80b0;">3</div>
+        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;box-sizing:border-box;background:#1e3a5f;border:2px solid #4a80b0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#4a80b0;">3</div>
         <div style="font-size:13px;font-weight:700;color:#4a80b0;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Real problem solving</div>
         <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;">AI starts doing work that would take you hours.</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="level-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
           <div style="background:rgba(74,128,176,0.1);border:1px solid rgba(74,128,176,0.2);border-radius:8px;padding:12px;">
             <div style="font-size:13px;font-weight:700;color:#4a80b0;margin-bottom:4px;">Career</div>
             <div style="font-size:13px;color:#d4d4d8;">Rewrites your resume to match a specific job posting and preps you with interview questions that company actually asks</div>
@@ -1123,10 +1131,10 @@ footer {
 
       <!-- Level 4 -->
       <div style="position:relative;margin-bottom:40px;">
-        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;background:#1e3a5f;border:2px solid #22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#22c55e;">4</div>
+        <div style="position:absolute;left:-42px;top:4px;width:28px;height:28px;box-sizing:border-box;background:#1e3a5f;border:2px solid #22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#22c55e;">4</div>
         <div style="font-size:13px;font-weight:700;color:#22c55e;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">It works while you sleep</div>
         <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;">Set it up once. It runs on its own. Every day.</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="level-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
           <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:8px;padding:12px;">
             <div style="font-size:13px;font-weight:700;color:#22c55e;margin-bottom:4px;">Morning inbox</div>
             <div style="font-size:13px;color:#d4d4d8;">AI reads your emails overnight, sorts by priority, and has draft replies waiting when you open your laptop</div>
@@ -1151,7 +1159,7 @@ footer {
         <div style="position:absolute;left:-42px;top:4px;width:32px;height:32px;background:linear-gradient(135deg,#16a34a,#22c55e);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;box-shadow:0 0 20px rgba(34,197,94,0.4);">5</div>
         <div style="font-size:13px;font-weight:700;color:#22c55e;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">AI builds things for you</div>
         <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;">You describe it. AI creates it. No coding. No design skills. No experience needed.</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div class="level-grid-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px;">
           <div style="background:linear-gradient(135deg,rgba(34,197,94,0.12),rgba(34,197,94,0.04));border:1px solid rgba(34,197,94,0.25);border-radius:8px;padding:14px;text-align:center;">
             <div style="font-size:22px;margin-bottom:6px;">&#x1F310;</div>
             <div style="font-size:13px;font-weight:700;color:#fff;">Working websites</div>
