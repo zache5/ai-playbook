@@ -965,6 +965,127 @@ footer {
   </div>
 </section>
 
+<!-- PROMPT TRANSFORMER -->
+<section style="padding:60px 0;background:var(--bg-alt);">
+  <div class="container" style="max-width:700px;text-align:center;">
+    <p style="font-size:15px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">See the difference</p>
+    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;">This is what the Playbook teaches you.</h2>
+    <p style="font-size:17px;color:var(--text-secondary);margin-bottom:32px;">Same person. Same AI tool. The only difference is knowing how to ask.</p>
+
+    <div style="display:flex;flex-direction:column;gap:20px;text-align:left;">
+      <!-- Bad prompt -->
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:#fee2e2;color:#dc2626;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;">BEFORE</span>
+          <span style="font-size:14px;color:var(--text-muted);">What most people type</span>
+        </div>
+        <div id="bad-prompt-box" style="background:var(--bg-white);border:2px solid #fecaca;border-radius:12px;padding:20px;font-size:16px;color:var(--text);line-height:1.6;min-height:60px;font-family:'Inter',sans-serif;">
+          <span id="bad-prompt-text">Help me with my resume</span>
+        </div>
+      </div>
+
+      <!-- Transform button -->
+      <div style="text-align:center;">
+        <button id="transform-btn" onclick="transformPrompt()" style="padding:14px 36px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;transition:all 0.3s;box-shadow:var(--shadow-md);">
+          Transform this prompt
+        </button>
+      </div>
+
+      <!-- Good prompt -->
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:#dcfce7;color:#16a34a;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;">AFTER</span>
+          <span style="font-size:14px;color:var(--text-muted);">What the Playbook teaches you to write</span>
+        </div>
+        <div id="good-prompt-box" style="background:var(--bg-white);border:2px solid #bbf7d0;border-radius:12px;padding:20px;font-size:16px;color:var(--text);line-height:1.6;min-height:60px;font-family:'Inter',sans-serif;opacity:0.4;">
+          <span id="good-prompt-text" style="color:var(--text-muted);font-style:italic;">Click transform to see the difference...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cycle dots -->
+    <div style="display:flex;justify-content:center;gap:8px;margin-top:24px;">
+      <button onclick="setExample(0)" class="prompt-dot" id="dot-0" style="width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:var(--accent);cursor:pointer;padding:0;"></button>
+      <button onclick="setExample(1)" class="prompt-dot" id="dot-1" style="width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:transparent;cursor:pointer;padding:0;"></button>
+      <button onclick="setExample(2)" class="prompt-dot" id="dot-2" style="width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:transparent;cursor:pointer;padding:0;"></button>
+      <button onclick="setExample(3)" class="prompt-dot" id="dot-3" style="width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:transparent;cursor:pointer;padding:0;"></button>
+    </div>
+  </div>
+</section>
+
+<script>
+const promptExamples = [
+  {
+    bad: "Help me with my resume",
+    good: "I'm applying for a senior marketing role at a SaaS company. Here's my current resume. Rewrite the experience section to highlight metrics, leadership, and results. Match the tone of this job posting and keep it under one page."
+  },
+  {
+    bad: "Write me a meal plan",
+    good: "Create a 5-day meal plan for two adults. Budget is $75/week. We don't eat dairy. Prep time under 30 minutes per meal. Include a grocery list organized by aisle and flag anything that can be batch-prepped on Sunday."
+  },
+  {
+    bad: "Help me start a business",
+    good: "I have 10 hours a week and $500 to start. I'm good at writing and know basic design. Give me 3 online business ideas I could launch in 30 days with those constraints. For each one, include startup cost, time to first revenue, and what I'd need to learn."
+  },
+  {
+    bad: "Make my email sound better",
+    good: "I need to email my manager asking for a raise. I've been in this role 18 months, took on two extra projects, and our team hit 140% of target last quarter. Write a professional but confident email that leads with results, not with the ask. Keep it under 200 words."
+  }
+];
+
+let currentExample = 0;
+let isAnimating = false;
+
+function setExample(idx) {
+  if (isAnimating) return;
+  currentExample = idx;
+  document.getElementById('bad-prompt-text').textContent = promptExamples[idx].bad;
+  document.getElementById('good-prompt-text').innerHTML = '<span style="color:var(--text-muted);font-style:italic;">Click transform to see the difference...</span>';
+  document.getElementById('good-prompt-box').style.opacity = '0.4';
+  document.getElementById('good-prompt-box').style.borderColor = '#bbf7d0';
+  document.getElementById('transform-btn').textContent = 'Transform this prompt';
+  document.querySelectorAll('.prompt-dot').forEach((d, i) => {
+    d.style.background = i === idx ? 'var(--accent)' : 'transparent';
+  });
+}
+
+function transformPrompt() {
+  if (isAnimating) return;
+  isAnimating = true;
+  const goodBox = document.getElementById('good-prompt-box');
+  const goodText = document.getElementById('good-prompt-text');
+  const btn = document.getElementById('transform-btn');
+  const fullText = promptExamples[currentExample].good;
+
+  btn.textContent = 'Transforming...';
+  goodBox.style.opacity = '1';
+  goodBox.style.borderColor = '#16a34a';
+  goodText.style.color = 'var(--text)';
+  goodText.style.fontStyle = 'normal';
+  goodText.textContent = '';
+
+  let i = 0;
+  const speed = 18;
+  function typeChar() {
+    if (i < fullText.length) {
+      goodText.textContent += fullText.charAt(i);
+      i++;
+      setTimeout(typeChar, speed);
+    } else {
+      btn.textContent = 'Try another example';
+      btn.onclick = function() {
+        currentExample = (currentExample + 1) % promptExamples.length;
+        setExample(currentExample);
+        btn.onclick = transformPrompt;
+        isAnimating = false;
+      };
+      isAnimating = false;
+    }
+  }
+  typeChar();
+}
+</script>
+
 <!-- WHAT IS THE COURSE -->
 <section id="what-is-it" style="padding:60px 0;">
   <div class="container" style="max-width:800px;text-align:center;">
