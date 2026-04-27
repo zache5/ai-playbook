@@ -969,15 +969,14 @@ footer {
 <section style="padding:60px 0;background:var(--bg-alt);">
   <div class="container" style="max-width:700px;text-align:center;">
     <p style="font-size:15px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">See the difference</p>
-    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;">This is what the Playbook teaches you.</h2>
-    <p style="font-size:17px;color:var(--text-secondary);margin-bottom:32px;">Same person. Same AI tool. The only difference is knowing how to ask.</p>
+    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;">You have no idea what AI can actually do.</h2>
+    <p style="font-size:17px;color:var(--text-secondary);margin-bottom:32px;">Most people use AI to write emails. That's like buying a Ferrari to drive to the mailbox.</p>
 
     <div style="display:flex;flex-direction:column;gap:20px;text-align:left;">
       <!-- Bad prompt -->
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span style="background:#fee2e2;color:#dc2626;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;">BEFORE</span>
-          <span style="font-size:14px;color:var(--text-muted);">What most people type</span>
+          <span style="background:#fee2e2;color:#dc2626;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;">WHAT YOU THINK AI DOES</span>
         </div>
         <div id="bad-prompt-box" style="background:var(--bg-white);border:2px solid #fecaca;border-radius:12px;padding:20px;font-size:16px;color:var(--text);line-height:1.6;min-height:60px;font-family:'Inter',sans-serif;">
           <span id="bad-prompt-text">Help me with my resume</span>
@@ -987,15 +986,14 @@ footer {
       <!-- Transform button -->
       <div style="text-align:center;">
         <button id="transform-btn" onclick="transformPrompt()" style="padding:14px 36px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;transition:all 0.3s;box-shadow:var(--shadow-md);">
-          Transform this prompt
+          Show me what's really possible
         </button>
       </div>
 
       <!-- Good prompt -->
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span style="background:#dcfce7;color:#16a34a;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;">AFTER</span>
-          <span style="font-size:14px;color:var(--text-muted);">What the Playbook teaches you to write</span>
+          <span style="background:#dcfce7;color:#16a34a;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;">WHAT AI CAN ACTUALLY DO</span>
         </div>
         <div id="good-prompt-box" style="background:var(--bg-white);border:2px solid #bbf7d0;border-radius:12px;padding:20px;font-size:16px;color:var(--text);line-height:1.6;min-height:60px;font-family:'Inter',sans-serif;opacity:0.4;">
           <span id="good-prompt-text" style="color:var(--text-muted);font-style:italic;">Click transform to see the difference...</span>
@@ -1016,20 +1014,20 @@ footer {
 <script>
 const promptExamples = [
   {
-    bad: "Help me with my resume",
-    good: "I'm applying for a senior marketing role at a SaaS company. Here's my current resume. Rewrite the experience section to highlight metrics, leadership, and results. Match the tone of this job posting and keep it under one page."
+    bad: "Help me write a better resume",
+    good: "Upload your resume and a job posting. AI rewrites every bullet point to match the role, highlights your strongest qualifications, flags gaps, scores your fit out of 100, then generates a custom cover letter and interview prep questions specific to that company."
   },
   {
-    bad: "Write me a meal plan",
-    good: "Create a 5-day meal plan for two adults. Budget is $75/week. We don't eat dairy. Prep time under 30 minutes per meal. Include a grocery list organized by aisle and flag anything that can be batch-prepped on Sunday."
+    bad: "Help me plan my week",
+    good: "Connect AI to your calendar, goals, and deadlines. It builds your entire weekly schedule around your energy levels, blocks deep work in the morning, batches meetings, builds in breaks, and reschedules everything automatically when something comes up."
   },
   {
-    bad: "Help me start a business",
-    good: "I have 10 hours a week and $500 to start. I'm good at writing and know basic design. Give me 3 online business ideas I could launch in 30 days with those constraints. For each one, include startup cost, time to first revenue, and what I'd need to learn."
+    bad: "Summarize this document",
+    good: "Drop in a 47-page lease agreement. AI pulls out every fee, penalty, and deadline. Highlights red flags in plain English. Compares your terms to market averages. Generates a list of questions to ask your landlord before you sign."
   },
   {
-    bad: "Make my email sound better",
-    good: "I need to email my manager asking for a raise. I've been in this role 18 months, took on two extra projects, and our team hit 140% of target last quarter. Write a professional but confident email that leads with results, not with the ask. Keep it under 200 words."
+    bad: "Help me learn something new",
+    good: "Tell AI you want to learn photography. It builds a personalized 30-day curriculum based on your skill level, creates practice assignments, reviews your work, quizzes you on technique, tracks your progress, and adjusts the plan based on where you're struggling."
   }
 ];
 
@@ -1072,7 +1070,7 @@ function transformPrompt() {
       i++;
       setTimeout(typeChar, speed);
     } else {
-      btn.textContent = 'Try another example';
+      btn.textContent = 'Show me another one';
       btn.onclick = function() {
         currentExample = (currentExample + 1) % promptExamples.length;
         setExample(currentExample);
