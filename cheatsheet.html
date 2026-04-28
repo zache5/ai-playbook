@@ -405,10 +405,11 @@ function copyPrompt(btn) {
 }
 </script>
 <!-- FLOATING BOTTOM BAR -->
-<div class="no-print" style="position:fixed;bottom:0;left:0;right:0;height:50px;background:#1e4f8a;display:flex;align-items:center;justify-content:center;gap:16px;z-index:100;box-shadow:0 -2px 10px rgba(0,0,0,0.15);">
-  <span style="color:white;font-size:13px;font-weight:600;">Want all 150+ workflows? <span style="color:#f59e0b;">50% off right now.</span></span>
-  <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" style="background:white;color:#1e4f8a;font-weight:700;font-size:12px;padding:8px 20px;border-radius:6px;text-decoration:none;white-space:nowrap;">Get the Playbook - $25</a>
+<div id="cheat-bottom-bar" style="position:fixed;bottom:0;left:0;width:100%;height:48px;line-height:48px;background-color:#1e4f8a;text-align:center;z-index:9999;font-size:13px;font-family:Inter,-apple-system,sans-serif;">
+  <span style="color:#fff;font-weight:600;">Want all 150+ workflows? <span style="color:#f59e0b;">50% off.</span></span>
+  <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" style="background:#fff;color:#1e4f8a;font-weight:700;font-size:12px;padding:6px 18px;border-radius:6px;text-decoration:none;margin-left:12px;">Get the Playbook - $25</a>
 </div>
-<div style="height:50px;"></div>
+<style>#cheat-bottom-bar ~ * { margin-bottom: 48px; }</style>
+<div style="height:48px;"></div>
 </body>
 </html>
