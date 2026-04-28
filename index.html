@@ -153,7 +153,6 @@ section {
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #e8eef5 0%, #f0f4f8 30%, #dce6f0 60%, #e8eef5 100%);
 }
 
 .hero-video {
@@ -914,7 +913,7 @@ footer {
     <div class="nav-links">
       <a href="#ai-levels">What AI Can Do</a>
       <a href="#what-is-it">What Is It</a>
-      <a href="#free-preview">See Inside</a>
+      <a href="#see-inside">See Inside</a>
       <a href="#curriculum">Full Curriculum</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
@@ -946,32 +945,53 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
+  <video style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.15;" autoplay muted loop playsinline>
+    <source src="background.mp4" type="video/mp4">
+  </video>
   <div class="container" style="position:relative;z-index:2;">
     <h1>They're not smarter<br>than you.<br><span class="highlight">They just learned AI.</span></h1>
-    <p>Now you can too. A fully interactive guide that shows you exactly how to use AI to save time, work smarter, and get ahead in your career and everyday life.</p>
-    <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" class="btn-primary" style="padding:20px 48px;font-size:20px;">Get Instant Access</a>
-    <div style="margin-top:16px;font-size:14px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:6px;"><span style="color:#f59e0b;font-size:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 rated by verified buyers</div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="stat-number">26</div>
-        <div class="stat-label">Chapters</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Interactive Tools</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-number">150+</div>
-        <div class="stat-label">Real-World Workflows</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-number">Zero</div>
-        <div class="stat-label">Coding Experience Needed</div>
-      </div>
+    <p style="max-width:600px;margin:0 auto 24px;">26 interactive chapters. 150+ workflows. Built-in tools. No coding needed. Open it and start learning immediately.</p>
+    <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" class="btn-primary" style="padding:20px 48px;font-size:20px;">Get Instant Access - $25</a>
+    <div style="margin-top:14px;font-size:14px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:6px;"><span style="color:#f59e0b;font-size:16px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 from verified buyers</div>
+  </div>
+</section>
+
+
+<!-- PRODUCT PREVIEW -->
+<section id="see-inside" style="padding:50px 0;">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <p style="font-size:15px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">See what you're getting</p>
+    <h2 style="font-size:clamp(22px,3vw,28px);font-weight:800;letter-spacing:-0.02em;margin-bottom:28px;line-height:1.2;">Not a PDF. Not a video course. An interactive guide you open and start using.</h2>
+    <div style="max-width:700px;margin:0 auto;">
+      <video controls playsinline poster="demo-poster.jpg" preload="metadata" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.12);">
+        <source src="demo.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section style="padding:40px 0;background:var(--bg-alt);">
+  <div class="container" style="max-width:750px;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px;">
+      <span style="color:#f59e0b;font-size:22px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span style="font-size:15px;font-weight:700;color:var(--text);">5.0</span>
+      <span style="font-size:14px;color:var(--text-muted);">from verified buyers</span>
+    </div>
+    <div style="display:flex;gap:16px;text-align:left;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;background:var(--bg-white);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:10px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p style="font-size:16px;color:var(--text);line-height:1.6;margin:0 0 10px;font-weight:500;">"Was hesitant to buy at first since there were not many reviews yet, but was actually very impressed with how much this had and how helpful it was! For the first time I'm actually excited about AI now."</p>
+        <div style="font-size:13px;color:var(--text-muted);font-weight:600;">Christine R.</div>
+      </div>
+      <div style="flex:1;min-width:280px;background:var(--bg-white);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <div style="color:#f59e0b;font-size:16px;margin-bottom:10px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p style="font-size:16px;color:var(--text);line-height:1.6;margin:0 0 10px;font-weight:500;">"Actually was a very helpful guide. Can't find practical education like this on AI yet. Excited for the community to grow!"</p>
+        <div style="font-size:13px;color:var(--text-muted);font-weight:600;">Alex</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- AI PROGRESSION -->
 <section id="ai-levels" style="padding:80px 0;background:var(--text);color:#fff;">
@@ -1114,23 +1134,6 @@ footer {
     <p style="font-size:20px;color:rgba(255,255,255,0.85);line-height:1.6;margin-bottom:12px;">26 chapters. Built-in prompt builder. Copy-paste workflows. Private community. Every future update included.</p>
     <p style="font-size:17px;color:rgba(255,255,255,0.6);margin-bottom:36px;">Less than the cost of one hour with a tutor. And you keep it forever.</p>
     <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" style="display:inline-block;padding:18px 48px;background:#fff;color:#0f2b4a;font-size:18px;font-weight:800;border-radius:12px;text-decoration:none;font-family:inherit;transition:transform 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.3);">Get Instant Access - $25</a>
-  </div>
-</section>
-
-<!-- PRODUCT PREVIEW -->
-<section style="padding:60px 0;background:var(--bg-alt);">
-  <div class="container" style="max-width:1000px;">
-    <p style="font-size:15px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;text-align:center;">See Inside</p>
-    <h2 style="font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-0.02em;margin-bottom:40px;line-height:1.2;text-align:center;">Not a PDF. An interactive tool you actually use.</h2>
-    <div style="max-width:700px;margin:0 auto 32px;">
-      <video controls playsinline poster="demo-poster.jpg" preload="metadata" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.12);">
-        <source src="demo.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <div style="text-align:center;margin-top:32px;">
-      <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" class="btn-primary" style="display:inline-block;">Get the Full Curriculum - $25</a>
-    </div>
   </div>
 </section>
 
@@ -1513,29 +1516,6 @@ footer {
         </div>
         <h3>Anyone who wants to learn AI the right way</h3>
         <p>You have tried ChatGPT or Claude but know you are barely scratching the surface. This course shows you what is actually possible and how to set it up step by step.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section style="padding:70px 0;background:var(--bg-alt);">
-  <div class="container" style="max-width:750px;text-align:center;">
-    <div style="margin-bottom:32px;">
-      <div style="font-size:48px;font-weight:900;color:var(--text);line-height:1;">5.0</div>
-      <div style="color:#f59e0b;font-size:28px;margin:8px 0;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <div style="font-size:15px;color:var(--text-muted);">from verified buyers on Whop</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:20px;text-align:left;">
-      <div style="background:var(--bg-white);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px;">
-        <div style="color:#f59e0b;font-size:18px;margin-bottom:12px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p style="font-size:18px;color:var(--text);line-height:1.65;margin:0 0 14px;font-weight:500;">"Was hesitant to buy at first since there were not many reviews yet, but was actually very impressed with how much this had and how helpful it was! For the first time I'm actually excited about AI now."</p>
-        <div style="font-size:14px;color:var(--text-muted);font-weight:600;">Christine R. &mdash; Verified Buyer</div>
-      </div>
-      <div style="background:var(--bg-white);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px;">
-        <div style="color:#f59e0b;font-size:18px;margin-bottom:12px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p style="font-size:18px;color:var(--text);line-height:1.65;margin:0 0 14px;font-weight:500;">"Actually was a very helpful guide. Can't find practical education like this on AI yet. Excited for the community to grow!"</p>
-        <div style="font-size:14px;color:var(--text-muted);font-weight:600;">Alex &mdash; Verified Buyer</div>
       </div>
     </div>
   </div>
