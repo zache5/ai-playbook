@@ -1814,28 +1814,5 @@ document.addEventListener('click', function(e) {
   }
 });
 </script>
-
-<!-- EXIT INTENT POPUP -->
-<div id="exit-popup" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;font-family:'Inter',-apple-system,sans-serif;">
-  <div style="background:#fff;border-radius:16px;padding:40px;max-width:440px;width:90%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <button onclick="document.getElementById('exit-popup').style.display='none';" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;color:#71717a;cursor:pointer;">&times;</button>
-    <div style="font-size:32px;margin-bottom:12px;">&#128161;</div>
-    <h3 style="font-size:22px;font-weight:800;margin-bottom:8px;color:#09090b;">Before you go</h3>
-    <p style="font-size:15px;color:#3f3f46;line-height:1.6;margin-bottom:24px;">Grab the free AI cheat sheet. 20 real workflows you can start using today. No email required.</p>
-    <a href="cheatsheet.html" style="display:inline-block;padding:14px 36px;background:#1e4f8a;color:#fff;font-size:16px;font-weight:700;border-radius:10px;text-decoration:none;">Get the Free Cheat Sheet</a>
-    <p style="font-size:12px;color:#71717a;margin-top:12px;">No signup. No spam. Just useful AI workflows.</p>
-  </div>
-</div>
-<script>
-(function(){
-  var shown = false;
-  document.addEventListener('mouseout', function(e){
-    if (e.clientY < 5 && !shown) {
-      shown = true;
-      document.getElementById('exit-popup').style.display = 'flex';
-    }
-  });
-})();
-</script>
 </body>
 </html>
