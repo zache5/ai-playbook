@@ -1772,5 +1772,14 @@ function sendToBeehiiv(email) {
   }).catch(function(){});
 }
 </script>
+<!-- Reddit Pixel: track clicks to Whop as Lead events -->
+<script>
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href*="whop.com"]');
+  if (link && typeof rdt === 'function') {
+    rdt('track', 'Lead', {value: 9.99, currency: 'USD'});
+  }
+});
+</script>
 </body>
 </html>

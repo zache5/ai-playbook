@@ -416,5 +416,14 @@ function copyPrompt(btn) {
 </div>
 <style>#cheat-bottom-bar ~ * { margin-bottom: 48px; }</style>
 <div style="height:48px;"></div>
+<!-- Reddit Pixel: track clicks to Whop as Lead events -->
+<script>
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href*="whop.com"]');
+  if (link && typeof rdt === 'function') {
+    rdt('track', 'Lead', {value: 9.99, currency: 'USD'});
+  }
+});
+</script>
 </body>
 </html>
