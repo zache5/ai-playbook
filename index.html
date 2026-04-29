@@ -923,6 +923,7 @@ footer {
       <a href="#curriculum">Full Curriculum</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
+      <a href="cheatsheet.html" style="color:#16a34a !important;font-weight:600 !important;">Free Cheat Sheet</a>
       <a href="https://whop.com/the-ai-playbook1/the-ai-playbook-19/" class="nav-cta">Get the Guide</a>
     </div>
   </div>
@@ -993,6 +994,34 @@ footer {
   </div>
 </section>
 
+
+<!-- QUICK STATS BAR -->
+<section style="padding:32px 0;background:var(--bg-white);border-bottom:1px solid var(--border);">
+  <div class="container" style="max-width:900px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;text-align:center;">
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-0.03em;">26</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Chapters</div>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-0.03em;">150+</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Workflows</div>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-0.03em;">5</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Interactive Tools</div>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-0.03em;">40+</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">AI Tools Reviewed</div>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:28px;font-weight:900;color:var(--accent);letter-spacing:-0.03em;">&infin;</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Lifetime Updates</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- AI PROGRESSION -->
 <section id="ai-levels" style="padding:80px 0;background:var(--text);color:#fff;">
@@ -1573,6 +1602,10 @@ footer {
         <h3>How does it work? Is it a video course?</h3>
         <p>It is an interactive guide that runs in your browser. You open the file and start reading. Interactive tools, quizzes, and the AI assistant are all built in. No logins, no streaming, no platform. It is yours to keep.</p>
       </div>
+      <div class="faq-item">
+        <h3>What happens after I buy?</h3>
+        <p>Click the button, complete checkout on Whop (takes 30 seconds), and you get instant access. Open it in your browser and start immediately. No app to download, no account to create, no waiting. You own it forever.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1781,6 +1814,29 @@ document.addEventListener('click', function(e) {
     rdt('track', 'Lead', {value: 9.99, currency: 'USD'});
   }
 });
+</script>
+
+<!-- EXIT INTENT POPUP -->
+<div id="exit-popup" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;font-family:'Inter',-apple-system,sans-serif;">
+  <div style="background:#fff;border-radius:16px;padding:40px;max-width:440px;width:90%;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <button onclick="document.getElementById('exit-popup').style.display='none';" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;color:#71717a;cursor:pointer;">&times;</button>
+    <div style="font-size:32px;margin-bottom:12px;">&#128161;</div>
+    <h3 style="font-size:22px;font-weight:800;margin-bottom:8px;color:#09090b;">Before you go</h3>
+    <p style="font-size:15px;color:#3f3f46;line-height:1.6;margin-bottom:24px;">Grab the free AI cheat sheet. 20 real workflows you can start using today. No email required.</p>
+    <a href="cheatsheet.html" style="display:inline-block;padding:14px 36px;background:#1e4f8a;color:#fff;font-size:16px;font-weight:700;border-radius:10px;text-decoration:none;">Get the Free Cheat Sheet</a>
+    <p style="font-size:12px;color:#71717a;margin-top:12px;">No signup. No spam. Just useful AI workflows.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var shown = false;
+  document.addEventListener('mouseout', function(e){
+    if (e.clientY < 5 && !shown) {
+      shown = true;
+      document.getElementById('exit-popup').style.display = 'flex';
+    }
+  });
+})();
 </script>
 </body>
 </html>
